@@ -1,0 +1,10 @@
+*.dta
+*.zip
+*.xls
+*.xlsx
+*.doc
+*.docx
+*.log
+__pycache__/*
+*/__pycache__/*
+*/*/__pycache__/*
