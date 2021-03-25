@@ -232,11 +232,10 @@ for year in range(args.start, args.end + 1):
 	# Overall death count:
 	yearly_df = df\
 		.groupby('staters')\
-		.apply(len)\
+		.apply(lambda x: len(x) * multiplier)\
 		.rename('total_deaths')\
 		.to_frame()\
 		.reset_index()
-	yearly_df['total_deaths'] = yearly_df['total_deaths'] * multiplier
 	yearly_df = yearly_df\
 		.merge(
 			detailed_population\
@@ -255,7 +254,7 @@ for year in range(args.start, args.end + 1):
 		print("Calculating death count by gender.")
 	death_count_by_gender = df\
 		.groupby(['staters', 'sex'])\
-		.apply(len)\
+		.apply(lambda x: len(x) * multiplier)\
 		.to_frame()\
 		.reset_index()\
 		.pivot(index='staters', columns='sex')
@@ -290,7 +289,7 @@ for year in range(args.start, args.end + 1):
 		print("Calculating death count by gender & race.")
 	death_count_by_gender_and_race = df\
 		.groupby(['staters', 'sex', 'race'])\
-		.apply(len)\
+		.apply(lambda x: len(x) * multiplier)\
 		.to_frame()\
 		.reset_index()
 	death_count_by_gender_and_race['race'] = \
@@ -332,7 +331,7 @@ for year in range(args.start, args.end + 1):
 	# Death count by gender, by race & by age
 	death_count_by_gender_race_and_age = df\
 		.groupby(['staters', 'sex', 'race', 'age_group'])\
-		.apply(len)\
+		.apply(lambda x: len(x) * multiplier)\
 		.to_frame()\
 		.reset_index()
 	death_count_by_gender_race_and_age['race'] = \
