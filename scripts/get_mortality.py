@@ -199,6 +199,7 @@ for year in range(args.start, args.end + 1):
 	if verbose:
 		print("Load finished at: {}. Took {} seconds.".format(datetime_after_load, datetime_after_load - datetime_at_start))
 	if args.icd7 or args.icda8 or args.icd9 or args.icd10:
+		print("Filtering by CoD. Make sure that all ICD specifications have an associated regular expression for filtering.")
 		if args.invert:
 			df = df[~(df['ucod'].str.contains(cod_regex))]
 			if verbose:
@@ -230,7 +231,16 @@ for year in range(args.start, args.end + 1):
 	else:
 		pass  # staters is already in there, as the two-letter code
 
+	random_state = random.choice(df['staters'].dropna().unique().tolist())
+	print(f"Data sample from random state {random_state} (Year: {year})")
+	with pd.option_context('display.max_rows', None):
+		try:
+			print(df[df['staters'] == random_state].sample(5).T)
+		except ValueError:  # This happens when a territory like Virgin Islands is picked at random.
+			pass
 
+	total_deaths = len(df[df['staters'].notnull()])
+	print(f"Total death count in year {year}: {total_deaths}")
 
 	# Overall death count:
 	yearly_df = df\
@@ -239,6 +249,9 @@ for year in range(args.start, args.end + 1):
 		.rename('total_deaths')\
 		.to_frame()\
 		.reset_index()
+	print(f"Total death count in year {year}: {total_deaths}")
+	print(f"Cross-check for death count by state:", yearly_df['total_deaths'].sum())
+	print("Sample for death count for state and by gender")
 	yearly_df = yearly_df\
 		.merge(
 			detailed_population\
@@ -265,6 +278,11 @@ for year in range(args.start, args.end + 1):
 		death_count_by_gender.columns.get_level_values(1)
 	death_count_by_gender.rename(columns=genders, inplace=True)
 	death_count_by_gender.rename(columns={'male': 'male_deaths', 'female': 'female_deaths'}, inplace=True)
+	print(f"Total death count in year {year}: {total_deaths}")
+	print(f"Cross-check for death count by state and gender:", death_count_by_gender['male_deaths'].sum() + death_count_by_gender['female_deaths'].sum())
+	print("Sample for death count for state and by gender")
+	with pd.option_context('display.max_rows', None):
+		print(death_count_by_gender)
 	yearly_df = yearly_df.merge(
 		death_count_by_gender,
 		left_on='staters',
@@ -295,6 +313,8 @@ for year in range(args.start, args.end + 1):
 		.apply(lambda x: len(x) * multiplier)\
 		.to_frame()\
 		.reset_index()
+	print("Sample for death count for state, by gender and by race")
+	print(death_count_by_gender.sample(5))
 	death_count_by_gender_and_race['race'] = \
 		death_count_by_gender_and_race['race'].map(races)
 	death_count_by_gender_and_race['sex'] = \
@@ -329,7 +349,12 @@ for year in range(args.start, args.end + 1):
 		how='left',
 	)
 
-
+	print(f"Overall black female mortality for the year {year}. (Visual check to see if this figure looks correct.)")
+	print(100000 * yearly_df['female_black_deaths'].sum() / yearly_df['pop_female_black'].sum())
+	yearly_df['black_female_mortality_rate'] = 100000 * yearly_df['female_black_deaths'] / yearly_df['pop_female_black']
+	with pd.option_context('display.max_rows', None):
+		print(yearly_df[['staters', 'black_female_mortality_rate']])
+	del yearly_df['black_female_mortality_rate']
 
 	# Death count by gender, by race & by age
 	death_count_by_gender_race_and_age = df\
@@ -337,6 +362,8 @@ for year in range(args.start, args.end + 1):
 		.apply(lambda x: len(x) * multiplier)\
 		.to_frame()\
 		.reset_index()
+	print(f"Sample for death count for state, by gender, race and age group for the year {year}")
+	print(death_count_by_gender_race_and_age.sample(5).T)
 	death_count_by_gender_race_and_age['race'] = \
 		death_count_by_gender_race_and_age['race'].map(races)
 	death_count_by_gender_race_and_age['sex'] = \
@@ -370,6 +397,10 @@ for year in range(args.start, args.end + 1):
 		right_index=True,
 		how='left',
 	)
+
+	print(f"Sample from the entire data for the year {year}")
+	with pd.option_context('display.max_rows', None):
+		print(yearly_df.sample(5).T)
 
 	yearly_df['year'] = year
 
