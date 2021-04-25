@@ -1,19 +1,23 @@
+capture drop `law'
+capture generate `law' = 0
+
 local law mand_n_rec
 capture drop `law'
 capture generate `law' = 0
 
-* Recommended
 replace `law' = 1 if staters=="AR" & year >= 1991
 replace `law' = 1 if staters=="CA" & year >= 1996
+* CA is interesting
 replace `law' = 1 if staters=="MA" & year >= 1988
 replace `law' = 1 if staters=="MT" & year >= 1991
+* ND had an earlier, more discretionary law
 replace `law' = 1 if staters=="ND" & year >= 1995
 replace `law' = 1 if staters=="TN" & year >= 1995
 
 
-* Mandatory
 replace `law' = 1 if staters=="AK" & year >= 1996
 replace `law' = 1 if staters=="AZ" & year >= 1991
+* CA is interesting
 replace `law' = 1 if staters=="CO" & year >= 1994
 replace `law' = 1 if staters=="CT" & year >= 1986
 replace `law' = 1 if staters=="DC" & year >= 1991
@@ -34,7 +38,7 @@ replace `law' = 1 if staters=="OH" & year >= 1995
 replace `law' = 1 if staters=="OR" & year >= 1978
 replace `law' = 1 if staters=="RI" & year >= 1988
 replace `law' = 1 if staters=="SC" & year >= 1995
-replace `law' = 1 if staters=="SD" & year >= 1989
+replace `law' = 1 if staters=="SD" & year >= 1996
 replace `law' = 1 if staters=="UT" & year >= 1995
 replace `law' = 1 if staters=="VA" & year >= 1997
 replace `law' = 1 if staters=="WA" & year >= 1995
