@@ -10,10 +10,10 @@ It can be used to obtain mortality rates by cause-of-death.
 
 On a Windows system, run
 ```
-scripts\get_mortality.py -i raw_data -o mortality_by_state_v3.1.dta -s 2003 -e 2004 -v
+scripts\get_mortality.py -i raw_data -o mortality_by_state.dta -s 2003 -e 2004 -v
 ```
 
-after creating and population the following structure for `raw_data`:
+after creating and populating the following folder structure under `raw_data`:
 ```
 +
 +--BEA
