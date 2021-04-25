@@ -1,1 +1,1 @@
-python scripts\get_mortality.py -i D:\Home\Academic\Research\MAL_and_Mortality_Final\raw_data -o mortality_by_state_v3.1.dta -s 1969 -e 2004 -v > get_mortality.log
+python scripts\get_mortality.py -i ./raw_data -o ./processed_data/mortality_by_state_v3.3.dta -s 1969 -e 2004 -v > logs/get_mortality3.3.log
