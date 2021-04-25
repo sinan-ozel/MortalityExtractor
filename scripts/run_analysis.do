@@ -8,7 +8,7 @@ cd D:/Home/Academic/Research/MAL_and_Mortality_Final
 use processed_data/mortality_by_state_v3.3.dta, clear
 
 local year_start = 1969
-local year_end = 2002
+local year_end = 2004
 
 local lhs = "female_black"
 
