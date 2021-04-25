@@ -27,9 +27,17 @@ drop if staters=="GU"
 drop if staters=="AS"
 
 gen `lhs'_mortality = (`lhs'_deaths / pop_`lhs') * 100000
+gen ln_`lhs'_mortality = log(`lhs'_mortality)
 
 capture encode staters, gen(state)
 xtset state year
 
 reg `lhs'_mortality `x' i.state i.year `weights' if year>=`year_start' & year<=`year_end' `cond', vce(`stderrs')
+reg `lhs'_mortality `x' i.state i.year employment real_gdp personal_income `weights' if year>=`year_start' & year<=`year_end' `cond', vce(`stderrs')
+reg `lhs'_mortality `x' i.state i.year employment real_gdp personal_income hs_dem_majority sen_dem_majority `weights' if year>=`year_start' & year<=`year_end' `cond', vce(`stderrs')
+reg `lhs'_mortality `x' i.state i.year employment real_gdp personal_income hs_dem_majority sen_dem_majority i.state#c.year `weights' if year>=`year_start' & year<=`year_end' `cond', vce(`stderrs')
 
+xtpoisson `lhs'_mortality `x' i.year `weights' if year>=`year_start' & year<=`year_end' `cond', fe vce(robust)
+xtpoisson `lhs'_mortality `x' i.year employment real_gdp personal_income `weights' if year>=`year_start' & year<=`year_end' `cond', fe vce(robust)
+xtpoisson `lhs'_mortality `x' i.year employment real_gdp personal_income hs_dem_majority sen_dem_majority `weights' if year>=`year_start' & year<=`year_end' `cond', fe vce(robust)
+xtpoisson `lhs'_mortality `x' i.year employment real_gdp personal_income hs_dem_majority sen_dem_majority i.state#c.year `weights' if year>=`year_start' & year<=`year_end' `cond', fe vce(robust)
