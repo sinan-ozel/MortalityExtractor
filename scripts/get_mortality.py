@@ -310,6 +310,7 @@ for year in range(args.start, args.end + 1):
 		print("Calculating death count by gender & race.")
 	death_count_by_gender_and_race = df\
 		.groupby(['staters', 'sex', 'race'])\
+		['ucod']\
 		.apply(lambda x: len(x) * multiplier)\
 		.to_frame()\
 		.reset_index()
