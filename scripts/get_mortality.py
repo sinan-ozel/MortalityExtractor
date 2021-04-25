@@ -255,7 +255,7 @@ for year in range(args.start, args.end + 1):
 	yearly_df = yearly_df\
 		.merge(
 			detailed_population\
-				.query('year == {}'.format(year))\
+				.query(f'year == {year}')\
 				.groupby('st')\
 				[['pop']]\
 				.sum()\
@@ -291,7 +291,7 @@ for year in range(args.start, args.end + 1):
 	)
 	yearly_df = yearly_df.merge(
 		detailed_population\
-			.query('year == {}'.format(year))\
+			.query(f'year == {year}')\
 			.pivot_table(index='st', columns='sex', aggfunc='sum', values='pop')
 			.rename(columns={'Male': 'pop_male', 'Female': 'pop_female'}),
 		left_on='staters',
@@ -335,7 +335,7 @@ for year in range(args.start, args.end + 1):
 
 	population_by_gender_and_race = detailed_population\
 		[detailed_population['race'].isin(['White', 'Black'])]\
-		.query('year == {}'.format(year))\
+		.query(f'year == {year}')\
 		.pivot_table(index='st', columns=['sex', 'race'], aggfunc='sum', values='pop')
 
 	multiindex_columns = population_by_gender_and_race.columns.values
@@ -384,7 +384,7 @@ for year in range(args.start, args.end + 1):
 
 	population_by_gender_race_and_age = detailed_population\
 		[detailed_population['race'].isin(['White', 'Black'])]\
-		.query('year == {}'.format(year))\
+		.query(f'year == {year}')\
 		.pivot_table(index='st', columns=['sex', 'race', 'age_group'], aggfunc='sum', values='pop')
 
 	multiindex_columns = population_by_gender_race_and_age.columns.values
@@ -406,19 +406,19 @@ for year in range(args.start, args.end + 1):
 
 	# Add macroeconomics controls from BEA
 	yearly_df = yearly_df.merge(
-		employment.query('year == {}'.format(year)),
+		employment.query(f'year == {year}'),
 		on=['staters', 'year'],
 		how='left',
 	)
 
 	yearly_df = yearly_df.merge(
-		real_gdp.query('year == {}'.format(year)),
+		real_gdp.query(f'year == {year}'),
 		on=['staters', 'year'],
 		how='left',
 	)
 
 	yearly_df = yearly_df.merge(
-		personal_income.query('year == {}'.format(year)),
+		personal_income.query(f'year == {year}'),
 		on=['staters', 'year'],
 		how='left',
 	)
@@ -427,7 +427,7 @@ for year in range(args.start, args.end + 1):
 	yearly_df = yearly_df.merge(
 		partisan_balance\
 			[['st', 'year', 'sen_dem_majority', 'hs_dem_majority', 'sen_rep_majority', 'hs_rep_majority']]\
-			.query('year == {}'.format(year)),
+			.query(f'year == {year}'),
 		left_on=['staters', 'year'],
 		right_on=['st', 'year'],
 		how='left',
