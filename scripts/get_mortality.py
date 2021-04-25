@@ -1,5 +1,6 @@
 #!python3
 
+import random
 import argparse
 import os
 import errno
@@ -8,7 +9,7 @@ import re
 import numpy as np
 import pandas as pd
 from datetime import datetime
-from lib.mapping import fips_to_two_letter
+from lib.mapping import fips_to_two_letter, geocode_to_fips
 import gc
 
 parser = argparse.ArgumentParser(description="Get the number of deaths per year per state for any given cause of death.")
@@ -222,12 +223,14 @@ for year in range(args.start, args.end + 1):
 	# Between the years 1983 and 2002, inclusive, the FIPS code of
 	# the state of residence has been used. To ensure compatibility,
 	# convert to the 2-letter state code for the state of residence.
-	if 'staters' not in df.columns:
+	if year < 1982:
+		df['staters'] = df['staters'].map(geocode_to_fips).map(fips_to_two_letter)
+	elif year < 2003:
 		df['staters'] = df['fipsstr'].map(fips_to_two_letter)
-	elif year >= 2003:
-		pass
 	else:
-		df['staters'] = df['staters'].map(fips_to_two_letter)
+		pass  # staters is already in there, as the two-letter code
+
+
 
 	# Overall death count:
 	yearly_df = df\
