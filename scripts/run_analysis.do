@@ -5,7 +5,13 @@ clear
 
 cd D:/Home/Academic/Research/MAL_and_Mortality_Final
 
-use processed_data/mortality_by_state_v3.3.dta, clear
+local data_version = "3.4"
+local filename_prefix = "mortality"
+* local ischaemic_attack_mortality
+
+use processed_data/`filename_prefix'_by_state_v`data_version'.dta, clear
+local results_filename results/`filename_prefix'_results.dta
+
 
 local year_start = 1969
 local year_end = 2004
