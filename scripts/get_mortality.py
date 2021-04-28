@@ -1,4 +1,4 @@
-#!python3
+#!/usr/bin/env python3
 
 import random
 import argparse
@@ -93,9 +93,11 @@ del population
 # Load population by race, gender and age group.
 # Source: https://www.nber.org/data/seer_u.s._county_population_data.html
 detailed_population = pd.read_stata(os.path.join(args.input, 'Population', 'uswbo19agesadj.dta'), 'rb')
+detailed_population = detailed_population[~detailed_population['age'].isin(['0 years', '1-4 years', '5-9 years', '10-14 years', '15-19 years'])]
 detailed_population['age_group'] = detailed_population['age'].str[0] + '0s'
 detailed_population['age_group_lower'] = detailed_population['age'].str[0].astype(int) * 10
 detailed_population['age_group_upper'] = detailed_population['age'].str[0].astype(int) * 10 + 9
+detailed_population['over_40'] = detailed_population['age'].str[0].between('5', '8').map({True: 'over_40', False: 'below_40'})
 
 # Cross-check
 # detailed_population.pivot_table(index='st', columns=['year'], values=['pop'], aggfunc='sum')
@@ -214,11 +216,13 @@ for year in range(args.start, args.end + 1):
 		df['age_group'] = df['age'].astype(str).str[0] + '0s'
 		df['age_group_lower'] = df['age'].astype(str).str[0].astype(int) * 10
 		df['age_group_upper'] = df['age'].astype(str).str[0].astype(int) * 10 + 9
+		df['over_40'] = (df['age'] >= 40).map({True: 'over_40', False: 'below_40'})
 	else:
 		df = df[df['age'].between(1020, 1099)]
 		df['age_group'] = (df['age'] - 1000).astype(str).str[0] + '0s'
 		df['age_group_lower'] = (df['age'] - 1000).astype(str).str[0].astype(int) * 10
 		df['age_group_upper'] = (df['age'] - 1000).astype(str).str[0].astype(int) * 10 + 9
+		df['over_40'] = ((df['age'] - 1000) >= 40).map({True: 'over_40', False: 'below_40'})
 
 
 	# Between the years 1983 and 2002, inclusive, the FIPS code of
@@ -399,6 +403,51 @@ for year in range(args.start, args.end + 1):
 		how='left',
 	)
 
+
+	# Death count by gender, by race & by over/below 50
+	death_count_by_gender_race_and_40age_cutoff = df\
+		.groupby(['staters', 'sex', 'race', 'over_40'])\
+		.apply(lambda x: len(x) * multiplier)\
+		.to_frame()\
+		.reset_index()
+	print(f"Sample for death count for state, by gender, race and over/below 40 for the year {year}")
+	print(death_count_by_gender_race_and_40age_cutoff.sample(5).T)
+	death_count_by_gender_race_and_40age_cutoff['race'] = \
+		death_count_by_gender_race_and_40age_cutoff['race'].map(races)
+	death_count_by_gender_race_and_40age_cutoff['sex'] = \
+		death_count_by_gender_race_and_40age_cutoff['sex'].map(genders)
+	death_count_by_gender_race_and_40age_cutoff = \
+		death_count_by_gender_race_and_40age_cutoff\
+			.pivot(index='staters', columns=['sex', 'race', 'over_40'])\
+			.fillna(0)
+	multiindex_columns = death_count_by_gender_race_and_40age_cutoff.columns.values
+	flat_columns = ['_'.join(col[1:]).strip() + '_deaths' for col in multiindex_columns]
+	death_count_by_gender_race_and_40age_cutoff.columns = flat_columns
+	yearly_df = yearly_df.merge(
+		death_count_by_gender_race_and_40age_cutoff,
+		left_on='staters',
+		right_index=True,
+		how='left',
+	)
+
+	population_by_gender_race_and_40age_cutoff = detailed_population\
+		[detailed_population['race'].isin(['White', 'Black'])]\
+		.query(f'year == {year}')\
+		.pivot_table(index='st', columns=['sex', 'race', 'over_40'], aggfunc='sum', values='pop')
+
+	multiindex_columns = population_by_gender_race_and_40age_cutoff.columns.values
+	flat_columns = ['pop_' + '_'.join(col).lower().strip() for col in multiindex_columns]
+	population_by_gender_race_and_40age_cutoff.columns = flat_columns
+
+	yearly_df = yearly_df.merge(
+		population_by_gender_race_and_40age_cutoff,
+		left_on='staters',
+		right_index=True,
+		how='left',
+	)
+
+
+	
 	print(f"Sample from the entire data for the year {year}")
 	with pd.option_context('display.max_rows', None):
 		print(yearly_df.sample(5).T)
@@ -445,6 +494,7 @@ for year in range(args.start, args.end + 1):
 	with pd.option_context('display.max_rows', None):
 		print(total_df.dtypes)
 	total_df.to_stata(args.output)
+	# TODO: Add csv to upload to the repo
 	del df
 	del yearly_df
 	gc.collect()
