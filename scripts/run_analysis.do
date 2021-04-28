@@ -16,34 +16,83 @@ local results_filename results/`filename_prefix'_results.dta
 local year_start = 1969
 local year_end = 2004
 
-local lhs = "female_black"
+local lags = 5
+
+
+local replaceonce replace
 
 local weights = ""
 
-local stderrs = "cluster state"
+foreach treatment in "mand_n_rec"{
+	run treatment/`treatment'.do
 
-local x = "mand_n_rec"
+	* Set panel and time variables
+	* Needed for lags and for xtpoisson command
+	capture encode staters, gen(state)
+	xtset state year
 
-run treatment/`x'.do
+	* Generate lags
+	generate lag_`treatment'_00 = D.`treatment'
+	replace lag_`treatment'_00 = 0 if lag_`treatment'_00==.
+	local treatment_with_lags = "lag_`treatment'_00"
+	forvalues lag = 1/`lags'{
+		local suffix = string(`lag',"%02.0f")
+		generate lag_`treatment'_`suffix' = L`lag'.lag_`treatment'_00
+		local treatment_with_lags = "`treatment_with_lags' lag_`treatment'_`suffix'"
+	}
+	local suffix = string(`=`lags'+1',"%02.0f")
+	generate lag_`treatment'_`suffix' = L`=`lags'+1'.`treatment'
+	local treatment_with_lags = "`treatment_with_lags' lag_`treatment'_`suffix'"
 
-drop if staters=="ZZ"
-drop if staters=="PR"
-drop if staters=="VI"
-drop if staters=="GU"
-drop if staters=="AS"
+	* Drop territories
+	drop if staters=="ZZ"
+	drop if staters=="PR"
+	drop if staters=="VI"
+	drop if staters=="GU"
+	drop if staters=="AS"
 
-gen `lhs'_mortality = (`lhs'_deaths / pop_`lhs') * 100000
-gen ln_`lhs'_mortality = log(`lhs'_mortality)
+	foreach lhs in "female_black" "female_black_over_50"{
+		* Generate mortality rate
+		gen `lhs'_mortality = (`lhs'_deaths / pop_`lhs') * 100000
 
-capture encode staters, gen(state)
-xtset state year
+		foreach x in "`treatment'" "`treatment_with_lags'"{
+		
 
-reg `lhs'_mortality `x' i.state i.year `weights' if year>=`year_start' & year<=`year_end' `cond', vce(`stderrs')
-reg `lhs'_mortality `x' i.state i.year employment real_gdp personal_income `weights' if year>=`year_start' & year<=`year_end' `cond', vce(`stderrs')
-reg `lhs'_mortality `x' i.state i.year employment real_gdp personal_income hs_dem_majority sen_dem_majority `weights' if year>=`year_start' & year<=`year_end' `cond', vce(`stderrs')
-reg `lhs'_mortality `x' i.state i.year employment real_gdp personal_income hs_dem_majority sen_dem_majority i.state#c.year `weights' if year>=`year_start' & year<=`year_end' `cond', vce(`stderrs')
+			local spec 1
+			reg `lhs'_mortality `x' i.state i.year `weights' if year>=`year_start' & year<=`year_end' `cond', vce(cluster state)
+			regsave `x' using `results_filename', pval addlabel(lhs, `lhs', specification, `spec') `replaceonce'
+			local replaceonce append
 
-xtpoisson `lhs'_mortality `x' i.year `weights' if year>=`year_start' & year<=`year_end' `cond', fe vce(robust)
-xtpoisson `lhs'_mortality `x' i.year employment real_gdp personal_income `weights' if year>=`year_start' & year<=`year_end' `cond', fe vce(robust)
-xtpoisson `lhs'_mortality `x' i.year employment real_gdp personal_income hs_dem_majority sen_dem_majority `weights' if year>=`year_start' & year<=`year_end' `cond', fe vce(robust)
-xtpoisson `lhs'_mortality `x' i.year employment real_gdp personal_income hs_dem_majority sen_dem_majority i.state#c.year `weights' if year>=`year_start' & year<=`year_end' `cond', fe vce(robust)
+			local spec `=`spec' + 1'
+			reg `lhs'_mortality `x' i.state i.year employment real_gdp personal_income `weights' if year>=`year_start' & year<=`year_end' `cond', vce(cluster state)
+			regsave `x' using `results_filename', pval addlabel(lhs, `lhs', specification, `spec') append
+			
+			local spec `=`spec' + 1'
+			reg `lhs'_mortality `x' i.state i.year employment real_gdp personal_income hs_dem_majority sen_dem_majority `weights' if year>=`year_start' & year<=`year_end' `cond', vce(cluster state)
+			regsave `x' using `results_filename', pval addlabel(lhs, `lhs', specification, `spec') append
+			
+			local spec `=`spec' + 1'
+			reg `lhs'_mortality `x' i.state i.year employment real_gdp personal_income hs_dem_majority sen_dem_majority i.state#c.year `weights' if year>=`year_start' & year<=`year_end' `cond', vce(cluster state)
+			regsave `x' using `results_filename', pval addlabel(lhs, `lhs', specification, `spec') append
+			
+			local spec `=`spec' + 1'
+			xtpoisson `lhs'_mortality `x' i.year `weights' if year>=`year_start' & year<=`year_end' `cond', fe vce(robust)
+			regsave `x' using `results_filename', pval addlabel(lhs, `lhs', specification, `spec') append
+			
+			local spec `=`spec' + 1'
+			xtpoisson `lhs'_mortality `x' i.year employment real_gdp personal_income `weights' if year>=`year_start' & year<=`year_end' `cond', fe vce(robust)
+			regsave `x' using `results_filename', pval addlabel(lhs, `lhs', specification, `spec') append
+			
+			local spec `=`spec' + 1'
+			xtpoisson `lhs'_mortality `x' i.year employment real_gdp personal_income hs_dem_majority sen_dem_majority `weights' if year>=`year_start' & year<=`year_end' `cond', fe vce(robust)
+			regsave `x' using `results_filename', pval addlabel(lhs, `lhs', specification, `spec') append
+			
+			local spec `=`spec' + 1'
+			xtpoisson `lhs'_mortality `x' i.year employment real_gdp personal_income hs_dem_majority sen_dem_majority i.state#c.year `weights' if year>=`year_start' & year<=`year_end' `cond', fe vce(robust)
+			regsave `x' using `results_filename', pval addlabel(lhs, `lhs', specification, `spec') append
+		}
+	}
+}
+
+use `results_filename', clear
+list
