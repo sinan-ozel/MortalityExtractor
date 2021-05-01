@@ -5,7 +5,7 @@ clear
 
 cd D:/Home/Academic/Research/MAL_and_Mortality_Final
 
-local data_version = "3.4"
+local data_version = "3.5"
 local filename_prefix = "mortality"
 * local ischaemic_attack_mortality
 
