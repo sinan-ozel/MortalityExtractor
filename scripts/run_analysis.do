@@ -41,8 +41,8 @@ foreach treatment in "mand_n_rec"{
 		local treatment_with_lags = "`treatment_with_lags' lag_`treatment'_`suffix'"
 	}
 	local suffix = string(`=`lags'+1',"%02.0f")
-	generate lag_`treatment'_`suffix' = L`=`lags'+1'.`treatment'
-	local treatment_with_lags = "`treatment_with_lags' lag_`treatment'_`suffix'"
+	generate lag_`treatment'_LT = L`=`lags'+1'.`treatment'
+	local treatment_with_lags = "`treatment_with_lags' lag_`treatment'_LT"
 
 	* Drop territories
 	drop if staters=="ZZ"
