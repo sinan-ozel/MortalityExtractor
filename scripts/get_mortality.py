@@ -494,7 +494,7 @@ for year in range(args.start, args.end + 1):
 	with pd.option_context('display.max_rows', None):
 		print(total_df.dtypes)
 	total_df.to_stata(args.output)
-	# TODO: Add csv to upload to the repo
+	total_df.to_csv(args.output.replace('.dta', '.csv'), index=False)
 	del df
 	del yearly_df
 	gc.collect()
