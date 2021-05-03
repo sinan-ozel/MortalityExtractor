@@ -1,0 +1,1 @@
+python scripts\get_mortality.py -7 "^9(7[0-9]|63)" -8 "^95[0-9][0-9]?$" -9 "^95[0-9][0-9]?$" -10 "^X([67][0-9]|8[0-4])$"  -i ./raw_data -o ./processed_data/suicide_mortality_by_state_v3.5.dta -s 1969 -e 2004 
