@@ -1,0 +1,1 @@
+python scripts\get_mortality.py -7 "^(1[4-9]|2[0-3])" -8 "^(1[4-9]|2[0-3])" -9 "^(1[4-9]|2[0-3])" -10 "^(C|D[0-4])" -i ./raw_data -o ./processed_data/cancer_mortality_by_state_v3.5.dta -s 1969 -e 2004 
