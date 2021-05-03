@@ -51,7 +51,7 @@ foreach treatment in "mand_n_rec"{
 	drop if staters=="GU"
 	drop if staters=="AS"
 
-	foreach lhs in "female_black"{
+	foreach lhs in "female_black" "male_black" "female_white" "male_white"{
 		* Generate mortality rate
 		gen `lhs'_mortality = (`lhs'_deaths / pop_`lhs') * 100000
 
