@@ -1,0 +1,1 @@
+python scripts\get_mortality.py -7 "^16[23]" -8 "^162" -9 "^162" -10 "^C3[34]" -i ./raw_data -o ./processed_data/lung_cancer_mortality_by_state_v3.5.dta -s 1969 -e 2004 
