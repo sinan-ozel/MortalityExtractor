@@ -1,6 +1,7 @@
 local law discretionary
 capture drop `law'
 capture generate `law' = 0
+label variable `law' "Discretionary"
 
 replace `law' = 1 if staters=="AL" & year >= 1989
 replace `law' = 1 if staters=="AZ" & year >= 1991
@@ -32,6 +33,7 @@ replace `law' = 1 if staters=="WY" & year >= 1982
 local law mand_n_rec
 capture drop `law'
 capture generate `law' = 0
+label variable `law' "Mandatory or Recommended"
 
 replace `law' = 1 if staters=="AR" & year >= 1991
 replace `law' = 1 if staters=="CA" & year >= 1996
@@ -66,7 +68,7 @@ replace `law' = 1 if staters=="OH" & year >= 1995
 replace `law' = 1 if staters=="OR" & year >= 1978
 replace `law' = 1 if staters=="RI" & year >= 1988
 replace `law' = 1 if staters=="SC" & year >= 1995
-replace `law' = 1 if staters=="SD" & year >= 1996
+replace `law' = 1 if staters=="SD" & year >= 1989
 replace `law' = 1 if staters=="UT" & year >= 1995
 replace `law' = 1 if staters=="VA" & year >= 1997
 replace `law' = 1 if staters=="WA" & year >= 1995
