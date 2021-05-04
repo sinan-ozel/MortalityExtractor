@@ -1,0 +1,45 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{longtable}{l*{8}{c}}
+\hline\hline\endfirsthead\hline\endhead\hline\endfoot\endlastfoot
+                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}&\multicolumn{1}{c}{(7)}&\multicolumn{1}{c}{(8)}\\
+                    &\multicolumn{1}{c}{Female White Mortality}&\multicolumn{1}{c}{Female White Mortality}&\multicolumn{1}{c}{Female White Mortality}&\multicolumn{1}{c}{Female White Mortality}&\multicolumn{1}{c}{Female White Mortality}&\multicolumn{1}{c}{Female White Mortality}&\multicolumn{1}{c}{Female White Mortality}&\multicolumn{1}{c}{Female White Mortality}\\
+\hline
+main                &                     &                     &                     &                     &                     &                     &                     &                     \\
+lag\_mand\_n\_rec\_00   &      -17.32         &      -11.24         &      -1.646         &       3.449         &     -0.0139         &    -0.00607         &     0.00243         &     0.00322         \\
+                    &     (16.43)         &     (12.35)         &     (8.834)         &     (5.096)         &    (0.0146)         &    (0.0109)         &   (0.00785)         &   (0.00428)         \\
+[1em]
+lag\_mand\_n\_rec\_01   &      -24.39         &      -15.99         &      -7.736         &      -1.297         &     -0.0197         &    -0.00972         &    -0.00232         &   -0.000765         \\
+                    &     (17.33)         &     (12.56)         &     (9.952)         &     (6.992)         &    (0.0154)         &    (0.0110)         &   (0.00848)         &   (0.00586)         \\
+[1em]
+lag\_mand\_n\_rec\_02   &      -22.45         &      -14.45         &      -7.570         &       0.911         &     -0.0176         &    -0.00763         &    -0.00174         &     0.00118         \\
+                    &     (16.95)         &     (11.76)         &     (10.19)         &     (6.532)         &    (0.0149)         &    (0.0102)         &   (0.00865)         &   (0.00542)         \\
+[1em]
+lag\_mand\_n\_rec\_03   &      -26.29         &      -17.60         &      -6.932         &       2.282         &     -0.0206         &    -0.00968         &   -0.000274         &     0.00285         \\
+                    &     (20.42)         &     (15.04)         &     (11.61)         &     (7.421)         &    (0.0179)         &    (0.0131)         &   (0.00974)         &   (0.00620)         \\
+[1em]
+lag\_mand\_n\_rec\_04   &      -20.20         &      -11.23         &      -1.003         &       7.911         &     -0.0156         &    -0.00457         &     0.00451         &     0.00727         \\
+                    &     (20.79)         &     (14.78)         &     (12.07)         &     (6.947)         &    (0.0183)         &    (0.0132)         &    (0.0107)         &   (0.00587)         \\
+[1em]
+lag\_mand\_n\_rec\_05   &      -21.59         &      -12.93         &      -0.848         &       8.852         &     -0.0171         &    -0.00653         &     0.00426         &     0.00758         \\
+                    &     (22.46)         &     (16.03)         &     (12.76)         &     (6.965)         &    (0.0195)         &    (0.0140)         &    (0.0110)         &   (0.00582)         \\
+[1em]
+lag\_mand\_n\_rec\_LT   &      -32.11         &      -17.53         &      -7.638         &       7.499         &     -0.0293         &     -0.0141         &    -0.00592         &     0.00561         \\
+                    &     (28.87)         &     (18.00)         &     (16.20)         &     (7.976)         &    (0.0245)         &    (0.0159)         &    (0.0144)         &   (0.00677)         \\
+[1em]
+Economics Controls  &          No         &         Yes         &         Yes         &         Yes         &          No         &         Yes         &         Yes         &         Yes         \\
+[1em]
+Political Controls  &          No         &          No         &         Yes         &         Yes         &          No         &          No         &         Yes         &         Yes         \\
+[1em]
+State Time Trends   &          No         &          No         &          No         &         Yes         &          No         &          No         &          No         &         Yes         \\
+[1em]
+Year FE             &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         \\
+[1em]
+State FE            &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         \\
+\hline
+Observations        &        1481         &        1481         &        1451         &        1451         &        1481         &        1481         &        1451         &        1451         \\
+\hline\hline
+\multicolumn{9}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{9}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\end{longtable}
+}
