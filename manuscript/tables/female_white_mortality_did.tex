@@ -1,0 +1,26 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{longtable}{l*{3}{c}}
+\hline\hline\endfirsthead\hline\endhead\hline\endfoot\endlastfoot
+                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}\\
+                    &\multicolumn{1}{c}{Female White Mortality}&\multicolumn{1}{c}{Female White Mortality}&\multicolumn{1}{c}{Female White Mortality}\\
+\hline
+Mandatory or Recommended&       6.266         &       9.646         &       27.62\sym{*}  \\
+                    &     (13.04)         &     (15.25)         &     (16.07)         \\
+[1em]
+after               &       19.13\sym{**} &       19.12         &       4.794         \\
+                    &     (9.176)         &     (23.54)         &     (25.36)         \\
+[1em]
+treatment\_state     &       7.561         &       9.902         &      -7.509         \\
+                    &     (49.45)         &     (50.90)         &     (52.17)         \\
+[1em]
+Economics Controls  &          No         &         Yes         &         Yes         \\
+[1em]
+Political Controls  &          No         &          No         &         Yes         \\
+\hline
+Observations        &         455         &         455         &         446         \\
+\hline\hline
+\multicolumn{4}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{4}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\end{longtable}
+}
