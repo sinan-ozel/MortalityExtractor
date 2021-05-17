@@ -64,10 +64,10 @@ foreach treatment in "mand_n_rec"{
 		foreach lhs in "female_black" "male_black" "female_white" "male_white"{
 
 			if "`x'" == "`treatment'"{
-				local tex_filename manuscript/tables/`lhs'_`filename_prefix'.tex
+				local tex_filename manuscript/tables/`lhs'_`filename_prefix'_fe.tex
 			}
 			else{
-				local tex_filename manuscript/tables/`lhs'_`filename_prefix'_lags_`lags'.tex
+				local tex_filename manuscript/tables/`lhs'_`filename_prefix'_fe_lags_`lags'.tex
 			}
 
 			eststo clear
