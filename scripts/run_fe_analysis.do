@@ -9,10 +9,13 @@ cd D:/Home/Academic/Research/MAL_and_Mortality_Final
 
 local data_version = "3.5"
 local filename_prefix = "mortality"
-* local ischaemic_attack_mortality
+* local filename_prefix = "ischaemic_attack_mortality"
+* local filename_prefix = "cancer_mortality"
+* local filename_prefix = "lung_cancer_mortality"
+* local filename_prefix = "suicide_mortality"
 
 use processed_data/`filename_prefix'_by_state_v`data_version'.dta, clear
-local results_filename results/`filename_prefix'_results
+local results_filename results/`filename_prefix'_fe_results
 
 
 local year_start = 1969
@@ -89,6 +92,11 @@ foreach treatment in "mand_n_rec"{
 			regsave `x' using `results_filename'.dta, pval addlabel(lhs, `lhs', specification, `spec') append
 			
 			local spec `=`spec' + 1'
+			reg `lhs'_mortality `x' i.state i.year employment real_gdp personal_income i.state#c.year `weights' if year>=`year_start' & year<=`year_end' `cond', vce(cluster state)
+			eststo
+			regsave `x' using `results_filename'.dta, pval addlabel(lhs, `lhs', specification, `spec') append
+			
+			local spec `=`spec' + 1'
 			reg `lhs'_mortality `x' i.state i.year employment real_gdp personal_income hs_dem_majority sen_dem_majority i.state#c.year `weights' if year>=`year_start' & year<=`year_end' `cond', vce(cluster state)
 			eststo
 			regsave `x' using `results_filename'.dta, pval addlabel(lhs, `lhs', specification, `spec') append
@@ -108,6 +116,11 @@ foreach treatment in "mand_n_rec"{
 			eststo
 			regsave `x' using `results_filename'.dta, pval addlabel(lhs, `lhs', specification, `spec') append
 			
+			local spec `=`spec' + 1'
+			xtpoisson `lhs'_mortality `x' i.state i.year employment real_gdp personal_income i.state#c.year `weights' if year>=`year_start' & year<=`year_end' `cond', fe vce(robust)
+			eststo
+			regsave `x' using `results_filename'.dta, pval addlabel(lhs, `lhs', specification, `spec') append
+
 			local spec `=`spec' + 1'
 			xtpoisson `lhs'_mortality `x' i.state i.year employment real_gdp personal_income hs_dem_majority sen_dem_majority i.state#c.year `weights' if year>=`year_start' & year<=`year_end' `cond', fe vce(robust)
 			eststo
