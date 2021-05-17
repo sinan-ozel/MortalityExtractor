@@ -1,26 +1,27 @@
 {
 \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
-\begin{longtable}{l*{3}{c}}
+\begin{longtable}{l*{6}{c}}
 \hline\hline\endfirsthead\hline\endhead\hline\endfoot\endlastfoot
-                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}\\
-                    &\multicolumn{1}{c}{Male White Mortality}&\multicolumn{1}{c}{Male White Mortality}&\multicolumn{1}{c}{Male White Mortality}\\
+                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}\\
+                    &\multicolumn{1}{c}{Male White Mortality}&\multicolumn{1}{c}{Male White Mortality}&\multicolumn{1}{c}{Male White Mortality}&\multicolumn{1}{c}{Male White Mortality}&\multicolumn{1}{c}{Male White Mortality}&\multicolumn{1}{c}{Male White Mortality}\\
 \hline
-Mandatory or Recommended&       14.89         &       26.92         &       40.19\sym{*}  \\
-                    &     (16.43)         &     (17.56)         &     (21.61)         \\
+main                &                     &                     &                     &                     &                     &                     \\
+Mandatory or Recommended&       14.89         &       26.92         &       40.19\sym{*}  &      0.0104         &      0.0194         &      0.0294\sym{*}  \\
+                    &     (16.43)         &     (17.56)         &     (21.61)         &    (0.0123)         &    (0.0131)         &    (0.0158)         \\
 [1em]
-after               &      -41.31\sym{***}&       10.77         &      -1.954         \\
-                    &     (13.73)         &     (23.27)         &     (26.33)         \\
+after               &      -41.31\sym{***}&       10.77         &      -1.954         &     -0.0316\sym{***}&     0.00980         &   -0.000312         \\
+                    &     (13.73)         &     (23.27)         &     (26.33)         &    (0.0101)         &    (0.0184)         &    (0.0205)         \\
 [1em]
-treatment\_state     &      -69.80         &       3.969         &      -10.44         \\
-                    &     (58.23)         &     (58.03)         &     (62.14)         \\
+treatment\_state     &      -69.80         &       3.969         &      -10.44         &     -0.0539         &     0.00527         &    -0.00666         \\
+                    &     (58.23)         &     (58.03)         &     (62.14)         &    (0.0447)         &    (0.0448)         &    (0.0479)         \\
 [1em]
-Economics Controls  &          No         &         Yes         &         Yes         \\
+Economics Controls  &          No         &         Yes         &         Yes         &          No         &         Yes         &         Yes         \\
 [1em]
-Political Controls  &          No         &          No         &         Yes         \\
+Political Controls  &          No         &          No         &         Yes         &          No         &          No         &         Yes         \\
 \hline
-Observations        &         455         &         455         &         446         \\
+Observations        &         455         &         455         &         446         &         455         &         455         &         446         \\
 \hline\hline
-\multicolumn{4}{l}{\footnotesize Standard errors in parentheses}\\
-\multicolumn{4}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\multicolumn{7}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{7}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
 \end{longtable}
 }
