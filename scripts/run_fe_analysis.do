@@ -49,6 +49,7 @@ foreach treatment in "mand_n_rec"{
 	forvalues lag = 1/`lags'{
 		local suffix = string(`lag',"%02.0f")
 		generate lag_`treatment'_`suffix' = L`lag'.lag_`treatment'_00
+		label variable lag_`treatment'_`suffix' "\beta_{m,`lag'}"
 		local treatment_with_lags = "`treatment_with_lags' lag_`treatment'_`suffix'"
 	}
 	local suffix = string(`=`lags'+1',"%02.0f")
@@ -106,6 +107,7 @@ foreach treatment in "mand_n_rec"{
 			eststo
 			regsave `x' using `results_filename'.dta, pval addlabel(lhs, `lhs', specification, `spec') append
 			
+			/*
 			local spec `=`spec' + 1'
 			xtpoisson `lhs'_mortality `x' i.state i.year employment real_gdp personal_income `weights' if year>=`year_start' & year<=`year_end' `cond', fe vce(robust)
 			eststo
@@ -120,6 +122,7 @@ foreach treatment in "mand_n_rec"{
 			xtpoisson `lhs'_mortality `x' i.state i.year employment real_gdp personal_income i.state#c.year `weights' if year>=`year_start' & year<=`year_end' `cond', fe vce(robust)
 			eststo
 			regsave `x' using `results_filename'.dta, pval addlabel(lhs, `lhs', specification, `spec') append
+			*/
 
 			local spec `=`spec' + 1'
 			xtpoisson `lhs'_mortality `x' i.state i.year employment real_gdp personal_income hs_dem_majority sen_dem_majority i.state#c.year `weights' if year>=`year_start' & year<=`year_end' `cond', fe vce(robust)
