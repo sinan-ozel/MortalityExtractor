@@ -70,22 +70,12 @@ foreach x in "`treatment'"{
 		regsave `x' using `results_filename'.dta, pval addlabel(lhs, `lhs', specification, `spec') append
 
 		local spec `=`spec' + 1'
-		reg `lhs'_mortality `x' after treatment_state employment real_gdp personal_income hs_dem_majority sen_dem_majority if within_neighborhood == 1 `cond', vce(cluster state)
-		eststo
-		regsave `x' using `results_filename'.dta, pval addlabel(lhs, `lhs', specification, `spec') append
-
-		local spec `=`spec' + 1'
 		poisson `lhs'_mortality `x' after treatment_state if within_neighborhood == 1 `cond', vce(cluster state)
 		eststo
 		regsave `x' using `results_filename'.dta, pval addlabel(lhs, `lhs', specification, `spec') append
 
 		local spec `=`spec' + 1'
 		poisson `lhs'_mortality `x' after treatment_state employment real_gdp personal_income if within_neighborhood == 1 `cond', vce(cluster state)
-		eststo
-		regsave `x' using `results_filename'.dta, pval addlabel(lhs, `lhs', specification, `spec') append
-
-		local spec `=`spec' + 1'
-		poisson `lhs'_mortality `x' after treatment_state employment real_gdp personal_income hs_dem_majority sen_dem_majority if within_neighborhood == 1 `cond', vce(cluster state)
 		eststo
 		regsave `x' using `results_filename'.dta, pval addlabel(lhs, `lhs', specification, `spec') append
 
@@ -96,8 +86,6 @@ foreach x in "`treatment'"{
 			replace
 			indicate(
 				"Economics Controls = employment real_gdp personal_income"
-				"Political Controls = *_dem_*"
-
 			)
 			drop(_cons)
 			star(* 0.10 ** 0.05 *** 0.01)
