@@ -44,49 +44,61 @@ drop if staters=="AS"
 
 generate after = `treatment' | discretionary
 
-foreach x in "`treatment'"{
+encode staters, generate(temp)
+drop staters
+generate staters = temp
+drop temp
 
-	foreach lhs in "female_black" "male_black" "female_white" "male_white"{
 
-		local tex_filename manuscript/tables/`lhs'_`filename_prefix'_did.tex
+generate treatment_early = (years_after_law_pass < 2) & (years_after_law_pass >= 0) & treatment_state 
+generate treatment_late = (years_after_law_pass >= 2) & treatment_state 
+local cond = "(years_after_law_pass == -5 & years_after_law_pass < 0) | (years_after_law_pass >= 0 & years_after_law_pass <= 4)"
 
-		eststo clear
 
-		local spec 1
-		reg `lhs'_mortality `x' after treatment_state if abs(years_after_law_pass) <= 4, vce(cluster state)
-		eststo
-		regsave `x' using `results_filename'.dta, pval addlabel(lhs, `lhs', specification, `spec') `replaceonce'
-		local replaceonce append
+local x = "treatment_early treatment_late"
+	
 
-		local spec `=`spec' + 1'
-		reg `lhs'_mortality `x' after treatment_state employment real_gdp personal_income if abs(years_after_law_pass) <= 4, vce(cluster state)
-		eststo
-		regsave `x' using `results_filename'.dta, pval addlabel(lhs, `lhs', specification, `spec') append
+foreach lhs in "female_black" "male_black" "female_white" "male_white"{
 
-		local spec `=`spec' + 1'
-		poisson `lhs'_mortality `x' after treatment_state if abs(years_after_law_pass) <= 4, vce(cluster state)
-		eststo
-		regsave `x' using `results_filename'.dta, pval addlabel(lhs, `lhs', specification, `spec') append
+	local tex_filename manuscript/tables/`lhs'_`filename_prefix'_did.tex
+	
+	
+	
+	eststo clear
 
-		local spec `=`spec' + 1'
-		poisson `lhs'_mortality `x' after treatment_state employment real_gdp personal_income if abs(years_after_law_pass) <= 4, vce(cluster state)
-		eststo
-		regsave `x' using `results_filename'.dta, pval addlabel(lhs, `lhs', specification, `spec') append
+	local spec 1
+	reg `lhs'_mortality `x' after treatment_state if `cond', vce(cluster state)
+	eststo
+	regsave `x' using `results_filename'.dta, pval addlabel(lhs, `lhs', specification, `spec') `replaceonce'
+	local replaceonce append
 
-		#delimit ;
-		esttab using `tex_filename', 
-			se
-			label
-			replace
-			indicate(
-				"Economics Controls = employment real_gdp personal_income"
-			)
-			drop(_cons)
-			star(* 0.10 ** 0.05 *** 0.01)
-			long;
-		#delimit cr
+	local spec `=`spec' + 1'
+	reg `lhs'_mortality `x' after treatment_state employment real_gdp personal_income if `cond', vce(cluster state)
+	eststo
+	regsave `x' using `results_filename'.dta, pval addlabel(lhs, `lhs', specification, `spec') append
 
-	}
+	local spec `=`spec' + 1'
+	poisson `lhs'_mortality `x' after treatment_state if `cond', vce(cluster state)
+	eststo
+	regsave `x' using `results_filename'.dta, pval addlabel(lhs, `lhs', specification, `spec') append
+
+	local spec `=`spec' + 1'
+	poisson `lhs'_mortality `x' after treatment_state employment real_gdp personal_income if `cond', vce(cluster state)
+	eststo
+	regsave `x' using `results_filename'.dta, pval addlabel(lhs, `lhs', specification, `spec') append
+
+	#delimit ;
+	esttab using `tex_filename', 
+		se
+		label
+		replace
+		indicate(
+			"Economics Controls = employment real_gdp personal_income"
+		)
+		drop(_cons)
+		star(* 0.10 ** 0.05 *** 0.01)
+		long;
+	#delimit cr
 
 }
 
