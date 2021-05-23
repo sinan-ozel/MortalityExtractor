@@ -21,8 +21,6 @@ local results_filename results/`filename_prefix'_did_results
 local year_start = 1969
 local year_end = 2004
 
-local lags = 5
-
 
 local replaceonce replace
 
@@ -59,23 +57,23 @@ foreach x in "`treatment'"{
 		eststo clear
 
 		local spec 1
-		reg `lhs'_mortality `x' after treatment_state if within_neighborhood == 1 `cond', vce(cluster state)
+		reg `lhs'_mortality `x' after treatment_state if within_neighborhood == 1, vce(cluster state)
 		eststo
 		regsave `x' using `results_filename'.dta, pval addlabel(lhs, `lhs', specification, `spec') `replaceonce'
 		local replaceonce append
 
 		local spec `=`spec' + 1'
-		reg `lhs'_mortality `x' after treatment_state employment real_gdp personal_income if within_neighborhood == 1 `cond', vce(cluster state)
+		reg `lhs'_mortality `x' after treatment_state employment real_gdp personal_income if within_neighborhood == 1, vce(cluster state)
 		eststo
 		regsave `x' using `results_filename'.dta, pval addlabel(lhs, `lhs', specification, `spec') append
 
 		local spec `=`spec' + 1'
-		poisson `lhs'_mortality `x' after treatment_state if within_neighborhood == 1 `cond', vce(cluster state)
+		poisson `lhs'_mortality `x' after treatment_state if within_neighborhood == 1, vce(cluster state)
 		eststo
 		regsave `x' using `results_filename'.dta, pval addlabel(lhs, `lhs', specification, `spec') append
 
 		local spec `=`spec' + 1'
-		poisson `lhs'_mortality `x' after treatment_state employment real_gdp personal_income if within_neighborhood == 1 `cond', vce(cluster state)
+		poisson `lhs'_mortality `x' after treatment_state employment real_gdp personal_income if within_neighborhood == 1, vce(cluster state)
 		eststo
 		regsave `x' using `results_filename'.dta, pval addlabel(lhs, `lhs', specification, `spec') append
 
