@@ -1,0 +1,5162 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{tikz}
+\usepackage{longtable, multirow, caption}
+\usepackage{rotating}
+\usepackage{adjustbox}
+\usepackage{todonotes}
+\usepackage{makecell}
+\usepackage{multibib}
+
+
+
+\usetikzlibrary{trees}
+
+
+
+
+\definecolor{bronze}{rgb}{0.8, 0.5, 0.2}
+\definecolor{antiquefuchsia}{rgb}{0.57, 0.36, 0.51}
+\definecolor{cobalt}{rgb}{0.0, 0.28, 0.67}
+\end_preamble
+\options round
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style apacite
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Increase in the Mortality Rates of African-American Women in the Aftermath
+ of Mandatory Arrest Laws:
+\begin_inset Newline newline
+\end_inset
+
+A Study in Unintended Effects
+\end_layout
+
+\begin_layout Author
+Sinan Ozel
+\begin_inset Newline newline
+\end_inset
+
+University of Victoria
+\end_layout
+
+\begin_layout Abstract
+From the late 1970s into the 1990s, 20 states in the USA passed 'mandatory
+ arrest laws', designed to curb domestic violence, by requiring the responding
+ officer to arrest the offender.
+ I show that these laws led to an increase in the mortality rates of African-Ame
+rican women.
+ The increase takes place three to five years after the law has been passed
+ and loses its statistical significance as time passes.
+ I infer from these results that mandatory arrest laws had unintended consequenc
+es for the victims whose partners were arrested, but that these unintended
+ consequences impacted the victims only in the few years following the law.
+ I conclude that increased awareness of the law and offender deterrence
+ eventually mitigates these unintended consequences.
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:mal-introduction"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In the current paper, I present evidence that mandatory arrest laws, intended
+ to protect victims of domestic violence, led to a temporary increase in
+ the mortality rates of African-American women.
+ While this result may seem unexpected at first, prior literature suggests
+ that such an outcome is possible: in an experimental setting, African-American
+ victims were twice as likely to be dead after 23 years if their offending
+ partners are arrested 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "sherman2014increased"
+literal "true"
+
+\end_inset
+
+.
+ If arresting a domestic violence offender can unintentionally increase
+ the probability of death for a victim, then mandating arrest as a policy
+ for domestic violence can also unintentionally increase mortality rates
+ of African-American women.
+ 
+\end_layout
+
+\begin_layout Standard
+The main purpose and contribution of this paper is to estimate the impact
+ of mandatory arrest laws on mortality rates of African-American women.
+ For this purpose, I construct a data set of yearly mortality rates by state,
+ gender and race.
+ Results from 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "sherman2014increased"
+literal "true"
+
+\end_inset
+
+ suggest that victim mortality increases with partner arrest, but this result
+ is limited to an experimental setting where the deterrence effects of the
+ new law are non-existent or limited: offenders were not aware that their
+ actions could lead to an arrest, and could not have been deterred from
+ committing violence in the first place.
+ Outside of the experiment, once the mandatory arrest laws are passed and
+ known by the population, potential offenders can be deterred from offending
+ in the first place.
+\end_layout
+
+\begin_layout Standard
+For the identification of effects, I exploit the variation in the timing
+ of the passing of the mandatory arrest laws.
+ For this purpose, I use two empirical specifications: a difference-in-differenc
+es model and a fixed effects model.
+ The difference-in-differences model is the standard approach in identifying
+ causal impacts.
+ Fixed effects models are a generalization of the difference-in-differences
+ models and have been used in difference-in-differences settings.
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "lovenheim_long-run_2019,anderson_does_2015,huebener_compressing_2017"
+literal "true"
+
+\end_inset
+
+ With the fixed effects model in the current paper, I am able control for
+ state-specific confounding factors, and confounding factors specific to
+ each year.
+ Furthermore, I am able to control for linear time trends peculiar to each
+ state, as suggested by 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "angrist_mostly_2008"
+literal "false"
+
+\end_inset
+
+.
+ Furthermore, with the fixed-effects model, I am able to estimate the timing
+ of the impact.
+ In both specifications, I find a statistically significant increase in
+ mortality rates of African-American women.
+\end_layout
+
+\begin_layout Standard
+The main identification assumption for the difference-in-differences model
+ requires mortality rates in control and mandatory to follow similar trends.
+ I present the trends in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:trends"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ The identification assumption for the fixed effects model requires the
+ timing of the laws to be independent of confounding factors and the outcome
+ variable.
+ These confounding factors may come from data that is not observed or collected.
+ To control for the unobserved confounding factors that are specific to
+ a state, state-fixed controls are included in the model, and to control
+ for the confounding factors that are common across all states but vary
+ over time, year-fixed controls are included.
+ What remains are factors that may be correlated to a particular timing
+ of the law passing in a given state.
+ In the current setting, it was nation-wide events, and not state-specific
+ triggers, that led to the passing of the laws 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "iyengar2009doesthe,buzawa1996doarrests"
+literal "true"
+
+\end_inset
+
+.
+ This increases my confidence that the identification assumptions are met.
+ In spite of this, I also include state-year economic, demographic and political
+ controls, as well as state-specific linear time trends.
+ The results remain statistically significant.
+\end_layout
+
+\begin_layout Standard
+This paper has two main results: mandatory arrest laws led to an unintentional
+ increase in the mortality rates of African-American women, and this increase
+ was temporary.
+ I interpret these results as the consequence of deterrence of partners
+ by mandatory arrest.
+ The mandatory arrest laws created unintended consequences for the victims
+ in the first couple of years after they were passed, but in the following
+ years, they helped the victims by deterring the offenders, an effect that
+ was not captured in the experimental setting by 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "sherman2014increased"
+literal "true"
+
+\end_inset
+
+.
+ I discuss possible mechanisms and alternative explanations in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:discussion"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The rest of the paper is organized as follows.
+ In Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:mal-background"
+
+\end_inset
+
+, I give the background information regarding mandatory arrest laws, the
+ social experiments regarding spousal arrest, and a brief review of the
+ literature concerning mandatory arrest laws.
+ In Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:mal-data"
+
+\end_inset
+
+, I explain the construction of the data set used for the analysis.
+ In Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:mal-methodology"
+
+\end_inset
+
+, I explain my methodology.
+ In Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:mal-results"
+
+\end_inset
+
+, I demonstrate that there is an impact of the mandatory arrest laws on
+ the mortality rate of African-American women, and that this impact was
+ not sustained in the long run.
+ Finally, in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:conclusions"
+
+\end_inset
+
+, I finish by presenting my conclusions and the corresponding policy implication
+s.
+\end_layout
+
+\begin_layout Section
+Background & Prior Literature
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:mal-background"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:litrev"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+There are numerous studies concerning the impact of arrest on partner violence
+ in social experiments.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+See, among others, 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "maxwell2001theeffects"
+literal "false"
+
+\end_inset
+
+ for a combining look at all experimental results.
+\end_layout
+
+\end_inset
+
+ These results do not necessarily carry over to real life setting: studies
+ show that mandatory or recommended arrest laws may have unintentionally
+ increased some forms of domestic violence 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "dugan2003exposure,dugan2013policies,iyengar2009doesthe,sherman2013increased"
+literal "true"
+
+\end_inset
+
+.
+ There are fewer studies on the indirect consequences of partner arrest:
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "sherman2014increased"
+literal "false"
+
+\end_inset
+
+ show that arrest may have unintentionally and indirectly impacted victims'
+ probability of death in a social experiment setting.
+ However, this result has not been confirmed in real life settings.
+ The current paper fills in this gap in the literature by presenting emprical
+ evidence that passing mandatory or recommended arrest laws increases mortality
+ rates of African-American women, a population at-risk of domestic violence.
+\end_layout
+
+\begin_layout Standard
+Mandatory arrest laws require officers to make an arrest when responding
+ to a domestic violence incident.
+ Prior to the end of the 70s, no states had any arrest laws concerning domestic
+ violence: it was regarded as a 
+\begin_inset Quotes eld
+\end_inset
+
+private affair
+\begin_inset Quotes erd
+\end_inset
+
+ in the USA.
+ An arrest would have required the police officer to witness the crime,
+ or obtain an arrest warrant, which rarely happened 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "fedders1997lobbying,zeoli2011asummary,maxwell2001theeffects,pavlidakis_mandatory_2009,dugan2003domestic"
+literal "true"
+
+\end_inset
+
+.
+ The increasing influence of women's right movements, including a nationally-kno
+wn lawsuit against a police department
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+The case is Thurman v.
+ City of Torrington (1984).
+ The police officer arriving on the scene failed to make an arrest despite
+ seeing the suspect with a bloody knife and kicking his wife in the head.
+ The wife survived and was eventually awarded $ 2.3 million after suing the
+ city for failing to protect her.
+ For more details, see footnote 36 in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "fedders1997lobbying"
+literal "true"
+
+\end_inset
+
+, or the first paragraph of Section II in 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "sherman1992thevariable"
+literal "true"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+, started to bring focus to domestic violence as a policy concern 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "buzawa1996doarrests"
+literal "true"
+
+\end_inset
+
+.
+ In 1981, researchers working with the Minneapolis police department conducted
+ a random arrest experiment, Minneapolis Domestic Violence Experiment (MDVE),
+ and concluded that arrest decreases the repetition of domestic violence
+ in the following six months 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "sherman1984thespecific"
+literal "true"
+
+\end_inset
+
+.
+ The Attorney General released a report recommending arrest as an appropriate
+ response to family violence 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "unitedstates.1984attorney"
+literal "true"
+
+\end_inset
+
+.
+ These events, particularly the MDVE, triggered a nation-wide response to
+ deal with domestic violence as a public concern 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "iyengar2009doesthe,fedders1997lobbying"
+literal "true"
+
+\end_inset
+
+.
+ By the mid-90s, twenty-six states had mandatory or recommended arrest laws.
+ Remaining states passed a discretionary arrest law to explicitly leave
+ the decision to arrest at the discretion of the responding police officer.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Even though warrantless arrest laws vary in their wording and structure,
+ criminal law literature categorizes them into three categories 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "frye2007dualarrest,iyengar2009doesthe,hirschel2007domestic"
+literal "true"
+
+\end_inset
+
+.
+ 
+\emph on
+Mandatory arrest laws
+\emph default
+ require the officer to make an arrest.
+ 
+\emph on
+Recommended (or preferred / pro-arrest) arrest laws
+\emph default
+ articulate that arrest is the recommended action, but do not make it mandatory.
+ 
+\emph on
+Discretionary arrest laws
+\emph default
+ leave the decision to the police officer.
+ See 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:classification-of-warrantless-arrest-laws"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ The year that these laws were passed is shown in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:codifications"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Wrap figure
+lines 0
+placement R
+overhang 0in
+width "50col%"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The Types of Domestic Violence Arrest Laws
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:classification-of-warrantless-arrest-laws"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[%
+\end_layout
+
+\begin_layout Plain Layout
+
+	draw=black,
+\end_layout
+
+\begin_layout Plain Layout
+
+	thick,
+\end_layout
+
+\begin_layout Plain Layout
+
+	anchor=west,
+\end_layout
+
+\begin_layout Plain Layout
+
+	grow via three points={one child at (0.5,-0.7) and   two children at (0.5,-0.7)
+ and (0.5,-1.4)},
+\end_layout
+
+\begin_layout Plain Layout
+
+	edge from parent path={(
+\backslash
+tikzparentnode.south) |- (
+\backslash
+tikzchildnode.west)}
+\end_layout
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+node { Warrantless Arrest }
+\end_layout
+
+\begin_layout Plain Layout
+
+    child { node {Mandatory Arrest} }
+\end_layout
+
+\begin_layout Plain Layout
+
+    child { node {Recommended Arrest} }
+\end_layout
+
+\begin_layout Plain Layout
+
+    child { node {Discretionary Arrest} };
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotesize
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Criminal law literature categorizes domestic violence arrest laws into three
+ categories: mandatory, recommended and discretionary 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "frye2007dualarrest,iyengar2009doesthe,hirschel2007domestic"
+literal "true"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Around the same time that mandatory arrest laws were being passed, the results
+ from MDVE were challenged by a series of experiments.
+ These experiments are collectively called the Spouse Arrest Replication
+ Program, or SARP.
+ For the most part, the SARP replication experiments do not confirm the
+ original findings from MDVE 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "sherman1992thevariable,maxwell2001theeffects,berk1992thedeterrent"
+literal "true"
+
+\end_inset
+
+.
+ Despite this rejection, 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "berk1992thedeterrent"
+literal "true"
+
+\end_inset
+
+ show that there is a decrease in repeated offense for offenders with a
+ strong 
+\begin_inset Quotes eld
+\end_inset
+
+stake in society
+\begin_inset Quotes erd
+\end_inset
+
+, for instance, employed offenders.
+ Finally, 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "maxwell2002thepreventive"
+literal "true"
+
+\end_inset
+
+ conduct a meta study combining all experiments from the SARP program.
+ They conclude that arrest does in fact reduce repeated offense.
+ They also confirm the 
+\begin_inset Quotes eld
+\end_inset
+
+stake in society
+\begin_inset Quotes erd
+\end_inset
+
+ argument by showing that the decrease is larger for employed offenders.
+\end_layout
+
+\begin_layout Standard
+The largest of these replication experiments was the Milwaukee Domestic
+ Violence Experiment (MilDVE).
+ Recently, 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "sherman2014increased"
+literal "true"
+
+\end_inset
+
+ conducted a follow-up study on the victims 23 years after the experiment.
+ Surprisingly, they found that spouses of offenders who were arrested were
+ twice as likely to be dead.
+ It is not clear what causes the deaths, and it is also not clear how long
+ after the arrest the deaths take place.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Even though 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "sherman2014increased"
+literal "true"
+
+\end_inset
+
+ do not report on the particulars of the cause of death, they are able to
+ discern between violent deaths, heart disease, and cancer.
+ Their results come entirely from non-violent deaths.
+ In the current study, I double check my results by similarly distinguishing
+ non-violent deaths.
+ The results are very similar to the main results.
+ (Not reported)
+\end_layout
+
+\end_inset
+
+ Their results were driven by the mortality rates of African-American women.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Specifically, among the African-American population, they found that among
+ 529 victims treated with a partner arrest, 52, or almost 10% were dead,
+ as opposed to only 13 fatalities, or 5%, among the 262 victims whose partners
+ were not treated with partner arrest.
+ 
+\end_layout
+
+\end_inset
+
+ While there have always been concerns about racialized applications of
+ the law
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+ See 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "fedders1997lobbying,ruttenberg1994feminist,desmond2012unpolicing,miller_unintended_1989"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "sherman2014increased"
+literal "true"
+
+\end_inset
+
+ provide the first experimental evidence of a possible causal impact of
+ arrest on victim outcomes.
+ Mandatory arrest laws have been criticized for various reasons after their
+ inception
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+See 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "humphries2002noeasy"
+literal "true"
+
+\end_inset
+
+ for a good list and discussion.
+\end_layout
+
+\end_inset
+
+, but an increased likelihood of victim's death is arguably its most serious
+ unintended consequence in the literature.
+\end_layout
+
+\begin_layout Standard
+At first, it seems intuitive that mandatory arrest laws should not 
+\emph on
+increase
+\emph default
+ victim mortality rates: mandatory arrest laws are aimed at protecting the
+ victims, either by removing the offender from the scene, or by deterring
+ the offender from hurting the victim in the first place.
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "sherman2014increased"
+literal "true"
+
+\end_inset
+
+ discuss possible causal pathways that could explain this unexpected increase
+ in mortality, but they do not bring evidence on any particular pathways.
+ Given that their results are driven by African-American women, it is possible
+ that potential racialized applications of the law by police departments
+ may have played a role.
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "sherman2014increased"
+literal "true"
+
+\end_inset
+
+ speculate that an 
+\begin_inset Quotes eld
+\end_inset
+
+interaction between arrest, race and employment
+\begin_inset Quotes erd
+\end_inset
+
+ may explain the causal pathway that leads to the victim's death.
+ They note that the increase in mortality was attributable to African-American
+ female victims, and that employed victims and victims with partners who
+ had no prior arrest were impacted the most.
+ Possibly, the probability of death of a victim might be increasing due
+ to the loss of a job right after the incident.
+ Alternatively, the loss of a job of a partner may have a similar impact.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset citation
+LatexCommand citet
+key "pager_mark_2003,bushway1998theimpact"
+literal "true"
+
+\end_inset
+
+ show that a criminal record decreases employment opportunities.
+\end_layout
+
+\end_inset
+
+ Domestic violence is a particular type of crime where the interaction of
+ the victim and the offender can continue after an arrest or a prosecution.
+ As such, victims can be impacted indirectly by the loss of income opportunities
+ of the offender.
+ For example, alimony payments to a victim may decrease if the offender
+ faces a decrease in their income.
+ Such a pathway would be in parallel with microeconomic theory: because
+ members of a household may benefit from pooled resources, loss of resources
+ of the offender may impact the victim.
+\end_layout
+
+\begin_layout Standard
+The results from 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "sherman2014increased"
+literal "true"
+
+\end_inset
+
+ motivate the need to focus on African-American women.
+ This is perhaps expected: women are the primary victims of more physical
+ and criminal forms of domestic violence, and African-American women are
+ particularly at risk 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "farmer2003explaining,aizer2010thegender"
+literal "true"
+
+\end_inset
+
+.
+ However, African-American men, white women, and white men may also be impacted
+ by mandatory arrest laws.
+ How these groups are impacted can present evidence about the causal pathway.
+ In particular, if the causal pathway to mortality is mainly through the
+ interaction of arrest and loss of employment opportunities, I would expect
+ to see an increase in the mortality rates of all four groups: African-Americans
+ and whites, and both genders.
+ These groups can be impacted through the loss of resources related to employmen
+t whether they are offenders or victims.
+ Conversely, if racialized applications of the law play an important role,
+ I would expect to see an impact on African-American women and men, but
+ not white men and women.
+ How much the consequences of arrest can be transferred to the victim can
+ also show up on the data.
+ If the mortality rates of women increase, this serves as evidence that
+ the law is impacting women, even though they are less likely to be offenders
+ of domestic violence.
+ If the mortality rates of women and men increase by similar amounts, this
+ would serve as evidence that both offenders are victims are likely to be
+ impacted by the law.
+\end_layout
+
+\begin_layout Standard
+The randomized experiment in MilDVE was designed in the following manner:
+ first, a domestic violence incident needs to take place, and the victim
+ needs to call the department.
+ Once an offender and a victim unknowingly choose to be part of the experiment,
+ the police department made sure that they met the eligibility criteria:
+ the offense had to be a misdemeanor, so more serious offenses that involved
+ injury to the parties would not be included in the randomization.
+ Furthermore, the responding police officer had to have probable cause that
+ the offense occurred recently.
+ After these two criteria were met, the treatment (arrest) would be assigned
+ randomly.
+\end_layout
+
+\begin_layout Standard
+There are certain difficulties with this design: first, the offender is
+ unaware of the ongoing experiment, so they do not have a chance of being
+ deterred from the act of violence by the threat of arrest.
+ For this reason, the randomized experiments were able to test reductions
+ only in repetition of the offense.
+ Reductions in potential domestic violence in the overall population are
+ not easy to test through randomized design.
+ Furthermore, the design applied to only offenses that are not serious enough
+ to always warrant an arrest.
+ Arguably, arrests of spouses could be more beneficial and less harmful
+ to the victim when the underlying offense is more serious.
+ Finally, the researchers themselves suspected that police officers may
+ have subverted the experiment where they felt that the given experimental
+ treatment was inappropriate.
+ All of these measures point to a situation where the results could be biased
+ due to attrition from the experiment, or due to subversion 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "sherman1984thespecific"
+literal "true"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Typically, mortality rates of African-American women follow similar trends
+ in mandatory and discretionary arrest law states.
+ In the current paper, I present evidence that mortality rates for African-Ameri
+can women deviate from their trends in two to four years after the mandatory
+ arrest laws were passed.
+ With the quasi-experimental design in the current study, I estimate the
+ impact of mandating a treatment on an entire population, rather than a
+ particular subsample.
+ This allows me to overcome the challenges faced by the researchers in experimen
+t design.
+ Most importantly, the impact of deterrence of the first domestic violence
+ incident is not possible to capture in this randomized experiment design.
+ In addition, the situations with more serious offenses are not even in
+ the experiment.
+ Finally, the experiment design suffers from the possibility of subversion,
+ an issue that the authors themselves noticed.
+ Mortality rates of entire state populations do not suffer from these issues,
+ and the variation in the timing of the arrest laws create a quasi-experimental
+ setting, which I exploit to overcome the difficulties from the original
+ experiment.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:trends"
+
+\end_inset
+
+Mortality Rates in Discretionary vs Mandatory and Recommended Law States
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename visuals/Trends.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotesize
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+This graph shows the average mortality rates of African-American women in
+ discretionary versus mandatory and recommended law states.
+ I observe that the trends are similar overall.
+ The passing of mantatory and recommended arrest laws, took place between
+ the years 1978 and 1996, as shown by the vertical dotted lines.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:codifications"
+
+\end_inset
+
+Year of the Passing of the Arrest Law
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="27" columns="6">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+State
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Categorization
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Year of Passing
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+AK
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mandatory
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1996
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MT
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Recommended
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1991
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+AL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Discretionary
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1989
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+NC
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Discretionary
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1991
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+AZ
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Discretionary
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1991
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ND
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Recommended
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1995
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+AR
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Recommended
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1991
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+NE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Discretionary
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1989
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CA
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Recommended
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1996
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+NH
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Discretionary
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1979
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CO
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mandatory
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1994
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+NJ
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mandatory
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1991
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CT
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mandatory
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1986
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+NV
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mandatory
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1985
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+DC
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mandatory
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1991
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+NM
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mandatory
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1987
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+DE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Discretionary
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1984
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+NY
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mandatory
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1996
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+FL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Discretionary
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1992
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+OH
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mandatory
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1995
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+GA
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Discretionary
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1981
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+OK
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Discretionary
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1987
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+HI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Discretionary
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1980
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+OR
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mandatory
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1978
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+IA
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Discretionary
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1986
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+PA
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Discretionary
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1986
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ID
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Discretionary
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1979
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mandatory
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1988
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+IL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mandatory
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1993
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SC
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mandatory
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1995
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+IN
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Discretionary
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SD
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mandatory
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1989
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+KS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mandatory
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1992
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TN
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Recommended
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1995
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+KY
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Discretionary
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1980
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TX
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Discretionary
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1989
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+LA
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mandatory
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1985
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+UT
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mandatory
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1995
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MA
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Recommended
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1988
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+VA
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mandatory
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1997
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MD
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Discretionary
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1986
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+VT
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Discretionary
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1985
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ME
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mandatory
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1980
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+WA
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mandatory
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1995
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Discretionary
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1978
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+WI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mandatory
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1989
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MN
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Discretionary
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1978
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+WV
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Discretionary
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1994
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MO
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mandatory
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1989
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+WY
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Discretionary
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1982
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mandatory
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1995
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotesize
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Year the arrest law was passed in treatment (mandatory & recommended), and
+ in control (discretionary) states.
+ The list includes all 50 states and the District of Columbia.
+ Once a mandatory law has been passed in a state, the state kept the law
+ in place - no states repealed the law.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Data
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:mal-data"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In the current paper, the outcome variable is the mortality rate of African-Amer
+ican populations for each state-year pair.
+ Mortality rates are defined as the number of deaths in a given year per
+ 100,000 people of the relevant population.
+ They are used extensively in the medical and health economics literature
+ as an outcome of interest.
+ Since 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "sherman2014increased"
+literal "true"
+
+\end_inset
+
+ observe an increase in mortality of African-American victims, I also focus
+ my analysis on African-American mortality.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+I also ran the same analysis for white populations as well and found no
+ significant change.
+\end_layout
+
+\end_inset
+
+ Similar to 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "sherman2014increased"
+literal "true"
+
+\end_inset
+
+, I use changes in crude mortality among all of African-Americans in response
+ to arrest law changes.
+ I calculate these rates from the mortality data available at the National
+ Bureau of Economic Research (NBER).
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+For the number of deaths, I use data available at 
+\begin_inset CommandInset href
+LatexCommand href
+name "http://www.nber.org/data/vital-statistics-mortality-data-multiple-cause-of-death.html"
+target "http://www.nber.org/data/vital-statistics-mortality-data-multiple-cause-of-death.html"
+literal "false"
+
+\end_inset
+
+.
+ For population estimates for each state year pair, I use data available
+ at 
+\begin_inset CommandInset href
+LatexCommand href
+name "http://www.nber.org/data/census-intercensal-county-population.html"
+target "http://www.nber.org/data/census-intercensal-county-population.html"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ The descriptive statistics for African-American mortality rates are found
+ in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:descriptive"
+
+\end_inset
+
+, broken down by gender, and the type of arrest law.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:descriptive"
+
+\end_inset
+
+Descriptive Statistics for the Mortality Rates African-American Women
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+noindent
+\backslash
+resizebox{
+\backslash
+textwidth}{!}{
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tabular}{cccccccc}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hline 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+multicolumn{2}{c}{Mortality Rates} & Obs & Mean & Std Dev & 25th Percentile
+ & Median & 75th Percentile
+\backslash
+tabularnewline
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hline 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hline 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+multirow{7}{*}{
+\backslash
+rotatebox[origin=c]{90}{Women}} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{2mm}
+\end_layout
+
+\begin_layout Plain Layout
+
+& All & 1836 & 638 & 240 & 497 & 667 & 791
+\backslash
+tabularnewline
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+cline{2-8}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{2mm}
+\end_layout
+
+\begin_layout Plain Layout
+
+& No Law & 1031 & 663 & 239 & 522 & 685 & 809
+\backslash
+tabularnewline
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+cline{2-8}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{2mm}
+\end_layout
+
+\begin_layout Plain Layout
+
+& Discretionary & 416 & 626 & 241 & 501 & 675 & 779
+\backslash
+tabularnewline
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+cline{2-8}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{2mm}
+\end_layout
+
+\begin_layout Plain Layout
+
+& Recommended & 80 & 543 & 276 & 318 & 512 & 820
+\backslash
+tabularnewline
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+cline{2-8}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{2mm}
+\end_layout
+
+\begin_layout Plain Layout
+
+& Mandatory & 309 & 593 & 216 & 466 & 554 & 767
+\backslash
+tabularnewline
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+cline{2-8}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{2mm}
+\end_layout
+
+\begin_layout Plain Layout
+
+& Before 1985 & 816 & 660 & 235 & 526 & 676 & 811
+\backslash
+tabularnewline
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+cline{2-8}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{2mm}
+\end_layout
+
+\begin_layout Plain Layout
+
+& 1985 And After & 1020 & 620 & 242 & 475 & 662 & 784
+\backslash
+tabularnewline
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hline 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tabular}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotesize
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:descriptive"
+
+\end_inset
+
+ shows the descriptive statistics for the mortality rates.
+ The statistics come from state-year pairs, which correspond to each row
+ in the data.
+ For instance, 
+\begin_inset Quotes eld
+\end_inset
+
+Mandatory
+\begin_inset Quotes erd
+\end_inset
+
+ refers to the data points for states that passed a mandatory arrest law,
+ but includes only the years after the law has been passed.
+ Overall, mortality rates for African-American have been decreasing all
+ across the United States.
+ (The year 1985 is chosen arbitrarily from the middle of the data set to
+ show this decrease.) 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In any given state and year, a state can either have a warrantless arrest
+ law or no law governing arrest.
+ When the state has an arrest law, it can be either mandatory, recommended,
+ or discretionary.
+\end_layout
+
+\begin_layout Standard
+Warrantless arrest laws vary significantly in wording across states.
+ It is therefore necessary to find a reasonable simplification that categorizes
+ all different laws as one of the three classes.
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "zeoli2011asummary,hirschel2007domestic,ruttenberg1994feminist"
+literal "true"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "iyengar2009doesthe"
+literal "true"
+
+\end_inset
+
+ are the four papers that include such a clear classification.
+ Among these, only 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "iyengar2009doesthe"
+literal "true"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "zeoli2011asummary"
+literal "true"
+
+\end_inset
+
+ present a categorization that includes the year of passing.
+ From the two, I prefer 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "zeoli2011asummary"
+literal "true"
+
+\end_inset
+
+ because it was written by legal experts particularly in response to this
+ need for classification.
+ It is also the most recent classification available.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+In fact, 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "iyengar2009doesthe"
+literal "true"
+
+\end_inset
+
+ is one of the papers that 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "zeoli2011asummary"
+literal "true"
+
+\end_inset
+
+ cite as justification for their paper.
+\end_layout
+
+\end_inset
+
+ In addition, 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "zeoli2011asummary"
+literal "true"
+
+\end_inset
+
+ classification, unlike 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "iyengar2009doesthe"
+literal "true"
+
+\end_inset
+
+ classification, includes the year of passing for discretionary laws as
+ well as the mandatory and recommended.
+ By using the 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "zeoli2011asummary"
+literal "true"
+
+\end_inset
+
+, I am able to include binary variables for a discretionary arrest law and
+ confirm that these coefficients are not significant.
+ This classification is presented in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:codifications"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+According to 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "zeoli2011asummary"
+literal "true"
+
+\end_inset
+
+, there are 20 states and the District of Columbia with the expression 
+\begin_inset Quotes eld
+\end_inset
+
+shall arrest
+\begin_inset Quotes erd
+\end_inset
+
+ in their wording.
+ These are classified as mandatory arrest law states.
+ Similarly, there are six states with the expression 
+\begin_inset Quotes eld
+\end_inset
+
+is the preferred/recommended action
+\begin_inset Quotes erd
+\end_inset
+
+ in their arrest law wording.
+ These are classified as recommended arrest law states.
+ The remaining 25 states have laws with only the expression 
+\begin_inset Quotes eld
+\end_inset
+
+may arrest
+\begin_inset Quotes erd
+\end_inset
+
+ in their wording and these are classified as discretionary arrest law states.
+ This procedure covers all warrantless arrest laws currently in effect in
+ 50 states in the USA as well as the District of Columbia.
+ This categorization is guided by the summary of expressions in Table 2
+ in 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "zeoli2011asummary"
+literal "true"
+
+\end_inset
+
+.
+ All of these warrantless arrest laws were passed over a course of two decades
+ - see Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:codifications"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Empirical Methodology
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:mal-methodology"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To identify the effect of mandatory and recommended arrest laws on the mortality
+ rates of African-American women, I exploit the fact that the laws passed
+ in different years in different states.
+ For identification, I employ a difference-in-differences strategy and implement
+ this strategy in two baseline models.
+ The first model is the classic difference-in-differences model:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+y_{s,t}=\beta_{0}+\beta_{1}T_{s,t}+\beta_{2}T_{s}+\beta_{3}T_{t}+\epsilon_{s,t}\label{eq:did-model}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Here, the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$ 
+\backslash
+beta_1 $
+\end_layout
+
+\end_inset
+
+ is the coefficient of interest.Correspondingly, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$ T_{s,t} $
+\end_layout
+
+\end_inset
+
+ is a binary variable that takes the value 1 if a state 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$s$
+\end_layout
+
+\end_inset
+
+ has already passed the mandatory or recommended arrest law passed in a
+ given year 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$t$
+\end_layout
+
+\end_inset
+
+.
+ The binary variable 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$ T_s $
+\end_layout
+
+\end_inset
+
+ takes the value 1 if a state 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$s$
+\end_layout
+
+\end_inset
+
+ ever passes a mandatory or recommended arrest law.
+ The binary variable 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$ T_t $
+\end_layout
+
+\end_inset
+
+ takes the value 0 in the years before the passing of an arrest law, and
+ the value 1 in the years after passing of an arrest law, for all states.
+ The setting is different from a traditional difference-in-differences setting
+ in the sense that before and after are 
+\begin_inset Quotes eld
+\end_inset
+
+staggered
+\begin_inset Quotes erd
+\end_inset
+
+, or different for each state.
+ Because mortality rates are not stable over time, I only include four years
+ before and after the law passing.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Changing this figure to 2, 3 or 5 does not impact the sign or statistical
+ significance of the results from the difference-in-differences estimation
+ for the African-American women, while changing to 1 makes the results statistic
+ally insignificant at the usual levels of confidence.
+\end_layout
+
+\end_inset
+
+ Following advice from 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "bertrand2003howmuch"
+literal "false"
+
+\end_inset
+
+on ignoring time series information, I pool the years before and after the
+ treatment.
+\end_layout
+
+\begin_layout Standard
+For the difference-in-differences model, to identify the causal impact of
+ the arrest laws, the states need to follow parallel trends overall.
+ These trends are presented in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:trends"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Overall, trends in mortality rates of African-American women follow similar
+ paths in different states.
+\end_layout
+
+\begin_layout Standard
+The second model is a fixed-effects model.
+ This allows me to exploit the variation in passing of the laws across states
+ and over time by including state-fixed effects and year-fixed effects.
+ This model controls for everything that the difference-in-differences model
+ controls for, but allows the states to vary in their unobserved characteristics.
+ It also allows me to control for unobserved characteristics specific to
+ each year.
+ The baseline estimation equation is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+y_{s,t}=\beta_{m}M_{s,t}+\psi X_{s,t}+\alpha_{s}+\lambda_{t}+\epsilon_{s,t}\label{eq:static-model}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Here, the subscripts 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$ s $
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$ t $
+\end_layout
+
+\end_inset
+
+ denote state and year.
+ Correspondingly, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$ 
+\backslash
+alpha_s $
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$ 
+\backslash
+lambda_t $
+\end_layout
+
+\end_inset
+
+ refer to the set of binary variables that control unobservable factors
+ particular to each state, and unobservable factors that change over time
+ across all states.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$ 
+\backslash
+beta_m $
+\end_layout
+
+\end_inset
+
+ is the effect of mandatory or recommended arrest laws on mortality rates.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$ M_{s,t} $
+\end_layout
+
+\end_inset
+
+ is a binary variable denoting whether a mandatory or a recommended arrest
+ law is in effect in a given state and year.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$ X_{s,t} $
+\end_layout
+
+\end_inset
+
+ denotes additional political and economic controls particular to each state
+ and year, and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$ 
+\backslash
+psi $
+\end_layout
+
+\end_inset
+
+ is the corresponding coefficient.
+\end_layout
+
+\begin_layout Standard
+Using the model in Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:static-model"
+
+\end_inset
+
+, I am able to control for state-specific and year-specific unobservables
+ using state- and year-fixed effects.
+ It is important to control for year-specific unobservables for two reasons.
+ First, mortality rates for African-American women show a downward trend.
+ Year-fixed binary variables control for this trend.
+ Second, a number of nationwide policies may have affected mortality rates
+ and domestic violence rates during this period.
+ Notably, the African-American mortality rates may be affected by tough-on-crime
+ measures such as the Anti-Drug Abuse Act of 1986, and domestic violence
+ rates may have been affected by the Violence Against Women Act of 1994.
+ Adding year-fixed effects allows us to control for omitted variables bias
+ related to unobserved factors changing over time across all states.
+ Similarly, state-fixed effects allow us to control for state-specific unobserva
+ble variables.
+ For instance, certain states may have particular practices specific to
+ them that may impact African-American mortality rates.
+ The fixed-effect model is considered a generalization of the difference-in-diff
+erences model 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "lovenheim_long-run_2019,anderson_does_2015,huebener_compressing_2017,allison_using_1994"
+literal "true"
+
+\end_inset
+
+.
+ By controlling for state fixed effects, we effectively control for treatment
+ and control units, at the same time allowing treatment and control units
+ to vary over state.
+ By controlling for time fixed effects, we control for pre- and post- treatment,
+ while allowing for time trends.
+\end_layout
+
+\begin_layout Standard
+For the fixed effects model, identification requires that the unobserved
+ factors specific to a particular state and year need to be independent
+ of the outcome and the variable of interest.
+ For example, the laws should not pass in response to a changes in mortality
+ rates of African-American women, or in response to sociodemographic changes
+ that might impact both the passing of the laws and the mortality rates
+ of African-American women.
+ Controlling for factors specific to each state and each year leaves the
+ factors that may be correlated with the timing of laws in each state.
+ I find no literature claiming that mandatory arrest laws were passed as
+ a reaction to state-specific triggers or trends.
+ In fact, the literature is unanimous in that mandatory arrest laws were
+ triggered by nationwide events, such as the MDVE, a number of lawsuits
+ and the pressure exerted by women's rights groups 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "buzawa1996doarrests,iyengar2009doesthe"
+literal "true"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+A particular concern is that other policy changes could have been passed
+ together with the arrest laws or that state-specific political trends could
+ be correlated with the timing of the mandatory arrest laws.
+ There is no evidence of this in the literature.
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "zeoli2011asummary,hirschel2007domestic,dugan2003exposure"
+literal "true"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "zorza1992thecriminal"
+literal "true"
+
+\end_inset
+
+, among others, describe the conditions under which mandatory arrest laws
+ were passed, and make no mention of any other laws that were passed at
+ the same time.
+ However, it is possible that mandatory arrest laws were possibly part of
+ some other political trend that was unique to these states.
+ While we control for factors specific to each state that are not changing
+ in time, if there are political factors that changed over time and are
+ correlated with the timing of mandatory arrest laws, these could bias the
+ estimates.
+ To be able to control for such factors, I include binary variables indicating
+ party control in each one of the houses in each state for all given years.
+ The binary variable denoting the composition of the state senates does
+ not yield a significant estimate, but the one denoting the composition
+ of the houses of representatives is significant.
+ Addition of state-year specific political controls do not alter the significanc
+e of my variables of interest.
+\end_layout
+
+\begin_layout Standard
+Economic factors may also be important for mortality rates.
+ If there are factors particular to a specific state, state-specific binary
+ variables in the model will control for these.
+ For instance, if there are economic factors that correlate with the particular
+ timing of the passing of mandatory arrest laws in each state, they can
+ bias the coefficient estimates.
+ I include economic controls for each state-year for the average personal
+ income, GDP and employment rates from the Bureau of Economic Analysis.
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+The files are available at 
+\begin_inset CommandInset href
+LatexCommand href
+name "http://www.bea.gov/iTable/iTable.cfm?reqid=70&step=1&isuri=1&acrdn=6#reqid=70&step=1&isuri=1"
+target "http://www.bea.gov/iTable/iTable.cfm?reqid=70&step=1&isuri=1&acrdn=6#reqid=70&step=1&isuri=1"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ If there are such economic factors associated with the particulars of each
+ state and year, I should observe a change in the coefficients.
+ Instead, the introduction of these controls do not change the significance
+ or the magnitude of the coefficients of interest.
+ 
+\end_layout
+
+\begin_layout Standard
+When using fixed-effects models for causal inference, 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "angrist_mostly_2008"
+literal "true"
+
+\end_inset
+
+ advise including state-specific linear time trends.
+ State-specific time trends are a final check on the identification strategy.
+ Even after the literature review, controlling for unobservable factors
+ relating to each state, and the inclusion of political and economic controls
+ particular to a specific state and year, there may be remaining unobserved
+ confounding factors.
+ State-specific linear time trends can capture any remaining unobserved
+ confounding factors.
+ Addition of state-specific time trends does not change the significance
+ of the coefficients of interest, but lowers the magnitude of the coefficient.
+ I discuss the implications of adding state-specific trends in Section 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "sec:discussion"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In addition to the main results, I use the model in Equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:dynamic-model"
+
+\end_inset
+
+ to test the timing of the effect.
+ In Equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:dynamic-model"
+
+\end_inset
+
+ is a time-varying extension of Equation 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "eq:static-model"
+
+\end_inset
+
+.
+ Here, I change the binary variable of interest, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$ M_{s,t} $
+\end_layout
+
+\end_inset
+
+, as follows: I include six variables, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$ M_{s,t-k} $
+\end_layout
+
+\end_inset
+
+ where 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$ k 
+\backslash
+in 
+\backslash
+{0, 5
+\backslash
+} $
+\end_layout
+
+\end_inset
+
+, capture the effect in the year of passing and the five subsequent years.
+ Different from Equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:static-model"
+
+\end_inset
+
+, the variable 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$ M_{s,t-k} $
+\end_layout
+
+\end_inset
+
+ takes the value one only in the k-th year after a mandatory arrest law
+ has been passed, and the value zero in all other years.
+ I then include a final variable, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$ M_{s,LT} $
+\end_layout
+
+\end_inset
+
+, which is similar to the original 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$ M_{s,t} $
+\end_layout
+
+\end_inset
+
+ but is lagged by five years, i.e.
+ it takes the value one in all years subsequent to the fifth year after
+ the law has passed.
+ This way, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$ 
+\backslash
+beta_{m,LT} $
+\end_layout
+
+\end_inset
+
+ captures the long-term effect of mandatory arrest laws.
+\begin_inset Formula 
+\begin{multline}
+y_{s,t}=\sum_{k}^{k\in\{0,5\}}\beta_{m,k}M_{s,t-k}+\beta_{m,LT}M_{s,LT}+\psi X_{s,t}+\alpha_{s}+\lambda_{t}+\epsilon_{s,t}\label{eq:dynamic-model}
+\end{multline}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:dynamic-model"
+
+\end_inset
+
+ allows me to capture the timing of the effect of the mandatory laws.
+ Estimating if the impact is temporary or permanent is important to understand
+ how society reacts as a whole to mandatory arrest laws.
+ If the death is due to an immediate event, such as a violent retaliation
+ or suicide, and the impact is permanent, the coefficients 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$ 
+\backslash
+beta_{m,0} $
+\end_layout
+
+\end_inset
+
+ through 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$ 
+\backslash
+beta_{m,5} $
+\end_layout
+
+\end_inset
+
+ and the long-term coefficient 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$ 
+\backslash
+beta_{m,LT} $
+\end_layout
+
+\end_inset
+
+ should all have similar magnitudes.
+ However, if the impact is immediate but temporary, the coefficient 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$ 
+\backslash
+beta_{m,0} $
+\end_layout
+
+\end_inset
+
+ should be high in magnitude, but the following coefficients 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$ 
+\backslash
+beta_{m,1} $
+\end_layout
+
+\end_inset
+
+ through 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$ 
+\backslash
+beta_{m,5} $
+\end_layout
+
+\end_inset
+
+ and the long-term coefficient 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$ 
+\backslash
+beta_{m,LT} $
+\end_layout
+
+\end_inset
+
+ should be small and statistically insignificant.
+ In another extreme, the deaths can be due to a long-term and sustained
+ decrease in life expectancy of the victims.
+ If this is the case, all of the coefficients 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$ 
+\backslash
+beta_{m,0} $
+\end_layout
+
+\end_inset
+
+ through 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$ 
+\backslash
+beta_{m,5} $
+\end_layout
+
+\end_inset
+
+ should have small coefficients, and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$ 
+\backslash
+beta_{m,LT} $
+\end_layout
+
+\end_inset
+
+ should be large in magnitude.
+ The results show that the impact is concentrated in the third and fourth
+ years after the arrest law has been passed, and that it is not sustained
+ in the long term.
+ The implications of these results are in Sections 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:discussion"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:conclusions"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Results
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:mal-results"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:diff-in-diff"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ shows the results from Equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:did-model"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, the difference-in-differences model.
+ Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:results-zeoli"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ shows the results from Equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:static-model"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:dynamicmodel-results"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ shows the results from Equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:dynamic-model"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:the_graph"
+
+\end_inset
+
+ is a visual representation of the main result.
+\end_layout
+
+\begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:the_graph"
+
+\end_inset
+
+ shows a deviation from the ongoing trend after a mandatory arrest law has
+ passed.
+ In the long run, this deviation decreases.
+ To obtain Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:the_graph"
+
+\end_inset
+
+, I normalize the mortality rate changes of each of the states by their
+ values before the law changes.
+ This serves as a visual representation of controlling for state level unobserva
+ble confounding factors.
+ I also shift the timelines to meet at the year that a law was passed; this
+ serves as a visual equivalent of controlling for time trends.
+ Finally, I take the average of each state-year pair within the treatment
+ (mandatory and recommended) and the control (discretionary) states.
+ The line in the middle divides the data into before and after, and the
+ dashed and the solid lines show the treatment and control.
+ The mortality rate of African-American women in discretionary states follow
+ a downward trajectory, while the mortality rate of African-American women
+ in mandatory and recommended states deviate from their similar trajectory
+ after the law has passed.
+ After a few years, the difference begins to diminish and becomes indistinguisha
+ble from statistical noise.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Average Mortality Rates of African-American Women Following the Law Change
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:the_graph"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename visuals/female_black.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:diff-in-diff"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ shows the results from Equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:did-model"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, the difference-in-differences model.
+ I observe that the mortality rates of African-American men and women increase
+ following the passage of mandatory arrest laws.
+ The results are statistically significant for African-American women.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: Get the table width right.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:diff-in-diff"
+
+\end_inset
+
+Difference-in-Differences Model Results: Impact of Mandatory and Recommended
+ Arrest Laws on Mortality Rates by Gender and Race
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+input{/tables/main_results_did.tex}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotesize
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:results-zeoli"
+
+\end_inset
+
+ shows the results from Equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:static-model"
+
+\end_inset
+
+.
+ Specifically, columns (2) and (3) correspond to Equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:static-model"
+
+\end_inset
+
+.
+ Column (1) is the same as column (2) except that column (1) does not include
+ any controls other than the binary (fixed effects) controls for state-specific
+ and year-specific effects.
+ In column (2), I introduce economics controls; while in column (3), I introduce
+ political controls.
+ In columns (4) and (5), I add state-specific linear time trends by interacting
+ the linear trend with state-level binary variables.
+ The results from columns (1) through (5) can be interpreted as the variation
+ in mortality rates, i.e.
+ the annual number of deaths per 100,000 people.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:results-zeoli"
+
+\end_inset
+
+ Fixed Effects Model Results: Impact of Mandatory and Recommended Arrest
+ Laws on Mortality Rates of African-American Women
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+input{/tables/main_results_fe.tex}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotesize
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+This table shows the impact estimates of mandatory and recommended arrest
+ laws.
+ Robust standard errors, clustered by state, are reported in parentheses.
+ Results are robust to block bootstrapped error estimation.
+ The errors are not guaranteed to be normally distributed, in fact, for
+ the log-linear specification, they are not normally distributed even asymptotic
+ally 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "giles2011interpreting"
+literal "true"
+
+\end_inset
+
+.
+ Block bootstrapped errors are very similar, and the star category remains
+ the same.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+When the outcome variable is a mortality rates or an incident rate, some
+ researchers prefer a linear model similar to Equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:static-model"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "stevenson2006bargaining,winegarden_demographic_1995,macinko_evaluation_2006"
+literal "true"
+
+\end_inset
+
+.
+ However, an alternative is to use a log-linear regression - examples in
+ literature include 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "baltagi1992cigarette"
+literal "true"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "lochner2003socialcapital"
+literal "true"
+
+\end_inset
+
+.
+ In the current paper, I also report on the results from a log-linear regression.
+ In Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:results-zeoli"
+
+\end_inset
+
+, columns (6) and (7) show the results from a log-linear model, and they
+ correspond to columns (1) and (5).
+ These results can be interpreted as the percent change in mortality rates.
+ 
+\end_layout
+
+\begin_layout Standard
+Finally, Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:dynamicmodel-results"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:dynamic-impact"
+
+\end_inset
+
+ show the results from Equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:dynamic-model"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ This specification allows for estimating the timing of the impact of mandatory
+ and recommended arrest laws.
+ The columns are laid out in the same fashion as those in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:results-zeoli"
+
+\end_inset
+
+: Columns (1) through (5) show that results with difference sets of controls
+ and and state-specific time trends, and columns (6) and (7) shows the results
+ from a log-linear specification.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:dynamic-impact"
+
+\end_inset
+
+The Timing of the Impact of Mandatory and Recommended Arrest Laws on Mortality
+ Rates of African-American Women
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename visuals/dynamic_results_for_female_black.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+This figure shows the dynamic response of the mortality rates of African-America
+n women to the passing of the arrest laws.
+ The corresponding coefficient estimates and standard error estimates are
+ available in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:dynamicmodel-results"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:dynamicmodel-results"
+
+\end_inset
+
+The Timing of the Impact of Mandatory and Recommended Arrest Laws on Mortality
+ Rates of African-American Women
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+input{/tables/main_results_fe_lags_5.tex}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotesize
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+This table shows the estimates of the impact of mandatory and recommended
+ arrest laws over time.
+ Robust standard errors, clustered by state, are reported in parentheses.
+ The errors are not guaranteed to be normally distributed, in fact, for
+ the log-linear specification, they are not normally distributed even asymptotic
+ally 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "giles2011interpreting"
+literal "true"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Discussion
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:discussion"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The results from Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:diff-in-diff"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:results-zeoli"
+
+\end_inset
+
+ show that the mortality rates of African-American women increased in response
+ to the passing of either mandatory or recommended arrest laws.
+ I estimate a statistically significant increase of 25 to 75 deaths per
+ 100,000 in the mortality rate of African-American women.
+ This can be interpreted as additional deaths attributable to the unintended
+ consequences of mandatory and recommended arrest laws.
+ The estimate remains statistically significant even after including state-speci
+fic time trends.
+ This confirms that partner arrest has unintended consequences for African-Ameri
+can women; and that these consequences show up in their mortality rates.
+\end_layout
+
+\begin_layout Standard
+In Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:results-zeoli"
+
+\end_inset
+
+, the results decrease in magnitude and statistical significance when state-spec
+ific time trends are added.
+ State-specific time trends should be interpreted with caution in this setting:
+ if the mechanism leading to mortality is taking place in the short term,
+ say, a few years after the arrest, then adding state-specific time trends
+ acts as a reasonable check of validity on my results.
+ However, if the impact is happening in the long term and is sustained,
+ they may absorb some of the impact attributable to the arrest.
+ This is because the state-specific time trends are constructed from the
+ entirety of the timeline for each state, and as such, they incorporate
+ the trends in mortality rates after an arrest law has been passed.
+ In this case, the magnitude of the estimates will be biased downwards.
+ Despite this caveat, I add state-specific linear time trends as an validity
+ check.
+ This inclusion follows literature, and the advice from 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "angrist_mostly_2008"
+literal "true"
+
+\end_inset
+
+ when using fixed effects models for causal inference.
+ The results are still statistically significant.
+\end_layout
+
+\begin_layout Standard
+The effect of mandatory arrest laws are in agreement with the results from
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "sherman2014increased"
+literal "true"
+
+\end_inset
+
+.
+ Results from Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:dynamicmodel-results"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ show that the estimated impact comes from the third to fifth year after
+ the law is passed.
+ This too is in agreement with the results from 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "sherman2014increased"
+literal "false"
+
+\end_inset
+
+, who show that risk of death is higher in the first five years - see Figure
+ 3.
+ The coefficients are statistically significant, and change only slightly
+ in magnitude and significance with the addition of time trends.
+ The coefficient showing the impact in the years after the fifth are not
+ statistically significant when controls are added.
+ These results support the findings from 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "sherman2014increased"
+literal "true"
+
+\end_inset
+
+, and show that they have played out in a similar way in the empirical setting
+ as well.
+\end_layout
+
+\begin_layout Standard
+One of the differences from 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "sherman2014increased"
+literal "true"
+
+\end_inset
+
+ is in the real life setting, new potential victims keep coming in to the
+ analysis: if arrest impacts all waves of victims equally, I would estimate
+ a sustained increase in mortality rates, as each wave of new victims would
+ keep adding to the mortality rates.
+ However, the analysis shows that the impact is not sustained in the long
+ run.
+ The victims that were impacted are only the first wave of victims, and
+ the mechanism took place in a few years.
+ This suggests that the unintended consequences estimated by the current
+ paper and 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "sherman2014increased"
+literal "false"
+
+\end_inset
+
+ are only effective when the victims and offenders are 
+\begin_inset Quotes eld
+\end_inset
+
+suprised
+\begin_inset Quotes erd
+\end_inset
+
+ by the laws.
+ Like the victims from the MilDVE experiment, these 
+\begin_inset Quotes eld
+\end_inset
+
+first wave
+\begin_inset Quotes erd
+\end_inset
+
+ of victims were likely not aware of the consequences of reporting the offense.
+ In this sense, they were similar to the victims in the experimental setting,
+ uninformed, therefore did not have a chance to change their behavior in
+ response to the arrest laws.
+ Consequently, I observe the treatment effect of partner arrest in the first
+ few years in the dynamic model.
+ As time passes, potential offenders and victims are likelier to become
+ informed about the legal change and the consequences of offending and reporting.
+ In the long run, the net policy effect of mandating partner arrest becomes
+ statistically insignificant.
+\end_layout
+
+\begin_layout Standard
+It might be considered surprising that there are differences between the
+ results from the experimental setting in 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "sherman2014increased"
+literal "true"
+
+\end_inset
+
+ and the results from the empirical setting.
+ In reality, this sort of divergence happens.
+ For example, alcohol consumption has been shown to lead to liver disease
+ in clinical trials 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "herd_ideology_1992"
+literal "true"
+
+\end_inset
+
+.
+ Based on this result, a policy maker can decide to outlaw alcohol.
+ However, liver disease did not decrease with state prohibitions 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "dills_alcohol_2004"
+literal "true"
+
+\end_inset
+
+.
+ Mortality from alcohol-related causes decreased only with the constitutional
+ prohibition, and then actually rose back to pre-prohibition levels, before
+ the constitutional prohibition was lifted 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "miron_alcohol_1991"
+literal "true"
+
+\end_inset
+
+.
+ This is a clear example of how a treatment effect can be different in an
+ experimental setting and in an empirical setting.
+ Mandating or outlawing a certain treatment can change behavior of populations
+ in the long run, leading to different outcomes outside of a randomized
+ trial.
+ In the case of prohibition, outlawing alcohol led to an unregulated market
+ of alcohol.
+ In the case of mandatory arrest law, mandating arrest created a deterrent
+ that acted over a longer period of time, in a way that a randomized trial
+ that ran once on a subset of individuals cannot create.
+ This explains the divergence of the results from the experimental setting.
+\end_layout
+
+\begin_layout Section
+Conclusion
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:conclusions"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The results from all the models in the current paper paint the following
+ picture: there are unintended consequences of a partner arrest, but these
+ consequences affect only the first wave of victims at a statistically significa
+nt level.
+ After a few years have passed under mandatory arrest laws, arrest seems
+ to no longer increase mortality rates for victims.
+ I interpret this as a result of potential offenders and victims adapting
+ their behavior as they become informed about the legal regime they live
+ under.
+ In this sense, the victims and offenders in the first wave were similar
+ to the victims and offenders from the experiment: they were not aware that
+ arrest was a potential consequence, and were not able to mitigate whatever
+ unintended consequences led to their demise.
+\end_layout
+
+\begin_layout Standard
+This conclusion confirms the experimental findings of 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "sherman2014increased"
+literal "true"
+
+\end_inset
+
+ in an empirical setting in the short term, but also shows that the impact
+ disappears in the long term.
+ In the empirical setting, the first set of offenders were unaware that
+ they could be arrested, and the victims suffered the eventual consequences
+ of arrest.
+ However, the current study shows that the overall impact is different when
+ the offenders are informed.
+ Subsequent potential offenders were likely deterred from offending because
+ they became more and more aware of the legal regime.
+ 
+\end_layout
+
+\begin_layout Standard
+An alternative interpretation is possible: victims, rather than the offenders,
+ may have been deterred from reporting the crime.
+ Research suggests that this is less likely: 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "chesney-lind_criminalizing_2002"
+literal "true"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "langton2012victimizations"
+literal "true"
+
+\end_inset
+
+ show that African-American women are more likely than white women to report
+ domestic violence to the police.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset citation
+LatexCommand citet
+key "miller_unintended_1989"
+literal "true"
+
+\end_inset
+
+ notes that this may be due to correlation to economic means, and that women
+ with more income have more access to resources and may not need to rely
+ on the police as much.
+\end_layout
+
+\end_inset
+
+ Furthermore, reporting levels across mandatory and discretionary states
+ are not significantly different from each other 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "hirschel2007domestic"
+literal "true"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The causal pathway that links the offender's arrest to the victim's death
+ is not clear, but it is possible to discuss some possibilities.
+ Lack of a clear cause of death, and the evidence of an increase in the
+ mortality of African-American women (but not other groups) suggest that
+ a complex interaction between racialized applications of policies, arrest
+ and loss of resources may be increasing the likelihood of the victim's
+ death.
+ One such example can involve eviction: 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "desmond2012unpolicing"
+literal "true"
+
+\end_inset
+
+ report examples of how victims were evicted because the house they were
+ in has been subject of an arrest.
+ Another type of interaction can involve the loss of spouse's work opportunities
+: 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "pager_mark_2003"
+literal "true"
+
+\end_inset
+
+ shows that a criminal record decreases employment opportunities.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+There are other studies that find a link between arrest and job market opportuni
+ties: 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "hunter1999effectof"
+literal "true"
+
+\end_inset
+
+ show that Indigenous populations suffer an 18% decrease in employment opportuni
+ties by being arrested.
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "bushway1998theimpact"
+literal "true"
+
+\end_inset
+
+ finds a modest impact on the job opportunities of young white American
+ men after being arrested.
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "bushway1998theimpact"
+literal "true"
+
+\end_inset
+
+ is another example.
+\end_layout
+
+\end_inset
+
+ These losses of opportunity or means can be detrimental to many.
+ For individuals already at risk, it can have disastrous consequences.
+ Domestic violence is already correlated with lower income and a lack of
+ economic means, so individuals at risk of losing healthcare, falling below
+ the poverty line and eviction are over-represented within the victims of
+ domestic violence.
+ Eviction can lead to homelessness for individuals who are already struggling
+ to make ends meet, and loss of spousal income can push an individual below
+ the poverty threshold.
+ Both of these events can have health consequences, and these health consequence
+s can increase the probability of death.
+\end_layout
+
+\begin_layout Standard
+Based on the conclusions, I make the following policy recommendation: if
+ policy makers decide to pass mandatory arrest laws, they should announce
+ and inform the population in advance.
+ This will give ample time for potential offenders to inform themselves
+ and shift their behavior.
+ This recommendation is not an endorsement of mandatory arrest laws in general:
+ there are other policy measures that are geared towards supporting the
+ victims rather than punishing the offenders.
+ The results from 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "sherman2014increased"
+literal "true"
+
+\end_inset
+
+, along with the current results, suggest that policy makers should pause
+ before passing mandatory arrest laws.
+ However, if they are going to be passed, informing the population beforehand
+ is desirable to mitigate potential unintentional consequences of these
+ laws.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "Dissertation"
+options "plainnat"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

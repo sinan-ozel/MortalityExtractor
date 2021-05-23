@@ -1,0 +1,33 @@
+\resizebox{\columnwidth}{!}{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{7}{c}}
+\hline\hline
+                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}&\multicolumn{1}{c}{(7)}\\
+
+\hline
+                &                     &                     &                     &                     &                     &                     &                     \\
+White Men&      -14.08         &      -5.082         &      -1.172         &      -0.523         &      -6.661         &     -0.0103         &    -0.00154         \\
+                    &     (23.09)         &     (21.57)         &     (21.12)         &     (10.12)         &     (8.573)         &    (0.0163)         &   (0.00651)         \\
+White Women&      -26.74         &      -15.26         &      -6.150         &      -0.601         &      -0.130         &     -0.0229         &     0.00299         \\
+                    &     (23.66)         &     (16.09)         &     (13.97)         &     (5.885)         &     (5.983)         &    (0.0206)         &   (0.00540)         \\
+Black Men&       95.74\sym{*}  &       84.20\sym{*}  &       81.90\sym{*}  &      -20.34         &      -18.67         &      0.0623\sym{*}  &    -0.00771         \\
+                    &     (49.34)         &     (43.41)         &     (45.05)         &     (18.51)         &     (18.37)         &    (0.0325)         &    (0.0187)         \\
+Black Women&       63.46\sym{***}&       54.15\sym{**} &       50.41\sym{**} &       25.64\sym{*}  &       29.91\sym{**} &      0.0608\sym{**} &      0.0408\sym{***}\\
+                    &     (23.02)         &     (21.45)         &     (21.49)         &     (14.50)         &     (13.11)         &    (0.0252)         &    (0.0154)         \\
+[1em]
+Economic Controls  &          No         &         Yes         &         Yes         &         Yes         &         Yes         &          No         &         Yes         \\
+[1em]
+Political Controls  &          No         &          No         &         Yes         &          No         &         Yes         &          No         &         Yes         \\
+[1em]
+State Time Trends   &          No         &          No         &          No         &         Yes         &         Yes         &          No         &         Yes         \\
+[1em]
+Year FE             &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         \\
+[1em]
+State FE            &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         &         Yes         \\
+\hline
+Observations        &        1829         &        1829         &        1793         &        1829         &        1793         &        1829         &        1793         \\
+\hline\hline
+\multicolumn{8}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{8}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\end{tabular}
+}
