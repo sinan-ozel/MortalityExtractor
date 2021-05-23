@@ -1,5 +1,5 @@
 generate within_neighborhood = 0
-local year_neighborhood = 4
+local year_neighborhood = 25
 
 generate treatment_state = 0
 

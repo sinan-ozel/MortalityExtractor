@@ -21,8 +21,6 @@ local results_filename results/`filename_prefix'_did_results
 local year_start = 1969
 local year_end = 2004
 
-local lags = 5
-
 
 local replaceonce replace
 
@@ -47,6 +45,11 @@ drop if staters=="VI"
 drop if staters=="GU"
 drop if staters=="AS"
 
+encode staters, generate(temp)
+drop staters
+generate staters = temp
+drop temp
+
 generate after = `treatment' | discretionary
 
 
@@ -70,12 +73,32 @@ foreach x in "`treatment'"{
 		regsave `x' using `results_filename'.dta, pval addlabel(lhs, `lhs', specification, `spec') append
 
 		local spec `=`spec' + 1'
+		reg `lhs'_mortality `x' after treatment_state employment real_gdp personal_income hs_dem_majority sen_dem_majority i.state#c.year if within_neighborhood == 1 `cond', vce(cluster state)
+		eststo
+		regsave `x' using `results_filename'.dta, pval addlabel(lhs, `lhs', specification, `spec') append
+
+		local spec `=`spec' + 1'
+		reg `lhs'_mortality `x' after treatment_state employment real_gdp personal_income i.state#c.year if within_neighborhood == 1 `cond', vce(cluster state)
+		eststo
+		regsave `x' using `results_filename'.dta, pval addlabel(lhs, `lhs', specification, `spec') append
+
+	    local spec `=`spec' + 1'
 		poisson `lhs'_mortality `x' after treatment_state if within_neighborhood == 1 `cond', vce(cluster state)
 		eststo
 		regsave `x' using `results_filename'.dta, pval addlabel(lhs, `lhs', specification, `spec') append
 
 		local spec `=`spec' + 1'
 		poisson `lhs'_mortality `x' after treatment_state employment real_gdp personal_income if within_neighborhood == 1 `cond', vce(cluster state)
+		eststo
+		regsave `x' using `results_filename'.dta, pval addlabel(lhs, `lhs', specification, `spec') append
+
+		local spec `=`spec' + 1'
+		poisson `lhs'_mortality `x' after treatment_state employment real_gdp personal_income hs_dem_majority sen_dem_majority i.state#c.year if within_neighborhood == 1 `cond', vce(cluster state)
+		eststo
+		regsave `x' using `results_filename'.dta, pval addlabel(lhs, `lhs', specification, `spec') append
+
+		local spec `=`spec' + 1'
+		poisson `lhs'_mortality `x' after treatment_state employment real_gdp personal_income i.state#c.year if within_neighborhood == 1 `cond', vce(cluster state)
 		eststo
 		regsave `x' using `results_filename'.dta, pval addlabel(lhs, `lhs', specification, `spec') append
 
