@@ -18,9 +18,6 @@ use processed_data/`filename_prefix'_by_state_v`data_version'.dta, clear
 local results_filename results/`filename_prefix'_did_results
 
 
-local year_start = 1969
-local year_end = 2004
-
 
 local replaceonce replace
 
@@ -47,7 +44,6 @@ drop if staters=="AS"
 
 generate after = `treatment' | discretionary
 
-
 foreach x in "`treatment'"{
 
 	foreach lhs in "female_black" "male_black" "female_white" "male_white"{
@@ -57,23 +53,23 @@ foreach x in "`treatment'"{
 		eststo clear
 
 		local spec 1
-		reg `lhs'_mortality `x' after treatment_state if within_neighborhood == 1, vce(cluster state)
+		reg `lhs'_mortality `x' after treatment_state if abs(years_after_law_pass) <= 4, vce(cluster state)
 		eststo
 		regsave `x' using `results_filename'.dta, pval addlabel(lhs, `lhs', specification, `spec') `replaceonce'
 		local replaceonce append
 
 		local spec `=`spec' + 1'
-		reg `lhs'_mortality `x' after treatment_state employment real_gdp personal_income if within_neighborhood == 1, vce(cluster state)
+		reg `lhs'_mortality `x' after treatment_state employment real_gdp personal_income if abs(years_after_law_pass) <= 4, vce(cluster state)
 		eststo
 		regsave `x' using `results_filename'.dta, pval addlabel(lhs, `lhs', specification, `spec') append
 
 		local spec `=`spec' + 1'
-		poisson `lhs'_mortality `x' after treatment_state if within_neighborhood == 1, vce(cluster state)
+		poisson `lhs'_mortality `x' after treatment_state if abs(years_after_law_pass) <= 4, vce(cluster state)
 		eststo
 		regsave `x' using `results_filename'.dta, pval addlabel(lhs, `lhs', specification, `spec') append
 
 		local spec `=`spec' + 1'
-		poisson `lhs'_mortality `x' after treatment_state employment real_gdp personal_income if within_neighborhood == 1, vce(cluster state)
+		poisson `lhs'_mortality `x' after treatment_state employment real_gdp personal_income if abs(years_after_law_pass) <= 4, vce(cluster state)
 		eststo
 		regsave `x' using `results_filename'.dta, pval addlabel(lhs, `lhs', specification, `spec') append
 
